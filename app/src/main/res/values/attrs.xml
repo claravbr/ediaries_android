@@ -1,0 +1,13 @@
+
+<resources>
+    <attr name="colorAzul" format="color" />
+    <attr name="colorOnAzul" format="color" />
+    <attr name="colorAzulContainer" format="color" />
+    <attr name="colorOnAzulContainer" format="color" />
+    <attr name="harmonizeAzul" format="boolean" />
+    <attr name="colorMorado" format="color" />
+    <attr name="colorOnMorado" format="color" />
+    <attr name="colorMoradoContainer" format="color" />
+    <attr name="colorOnMoradoContainer" format="color" />
+    <attr name="harmonizeMorado" format="boolean" />
+</resources>

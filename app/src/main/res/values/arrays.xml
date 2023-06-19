@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nivel_academico">
+        <item>0–3 años</item>
+        <item>3–6 años</item>
+        <item>1º primaria</item>
+        <item>2º primaria</item>
+        <item>3º primaria</item>
+        <item>4º primaria</item>
+        <item>5º primaria</item>
+        <item>6º primaria</item>
+        <item>1º ESO</item>
+        <item>2º ESO</item>
+        <item>3º ESO</item>
+        <item>4º ESO</item>
+        <item>1º Bachillerato</item>
+        <item>2º Bachillerato</item>
+    </string-array>
+</resources>
