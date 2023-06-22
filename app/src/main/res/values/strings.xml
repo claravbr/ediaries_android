@@ -35,4 +35,17 @@
     <string name="next">siguiente</string>
     <string name="content_description_next">flecha botón para avanzar en el formulario</string>
     <string name="a_adir">Añadir</string>
+    <string name="mis_tareas">Mis tareas</string>
+    <string name="mi_progreso">Mi progreso</string>
+    <string name="consejos_y_ayuda">Consejos y ayuda</string>
+    <string name="c_mo_estoy">Cómo estoy</string>
+    <string name="fecha">Fecha:</string>
+    <string name="porque">Porque...</string>
+    <string name="enfadado">Enfadado</string>
+    <string name="triste">Triste</string>
+    <string name="cansado">Cansado</string>
+    <string name="contento">Contento</string>
+    <string name="emocionado">Emocionado</string>
+    <string name="escribe_aqu_por_qu_te_has_sentido_as_hoy">Escribe aquí por qué te has sentido así</string>
+    <string name="guardar">Guardar</string>
 </resources>

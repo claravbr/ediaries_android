@@ -33,4 +33,17 @@
     <string name="indica_si_tomas_alguna_medicaci_n">Indica si tomas alguna medicación</string>
     <string name="en_caso_afirmativo_a_qu_edad_te_diagnosticaron_tdah">En caso afirmativo, ¿A qué edad te diagnosticaron TDAH?</string>
     <string name="en_caso_afirmativo_indica_el_tipo">En caso afirmativo, indica el tipo</string>
+    <string name="mis_tareas">Mis tareas</string>
+    <string name="mi_progreso">Mi progreso</string>
+    <string name="consejos_y_ayuda">Consejos y ayuda</string>
+    <string name="c_mo_estoy">Cómo estoy</string>
+    <string name="fecha">Fecha:</string>
+    <string name="porque">Porque...</string>
+    <string name="enfadado">Enfadado</string>
+    <string name="triste">Triste</string>
+    <string name="cansado">Cansado</string>
+    <string name="contento">Contento</string>
+    <string name="emocionado">Emocionado</string>
+    <string name="escribe_aqu_por_qu_te_has_sentido_as_hoy">Escribe aquí por qué te has sentido así</string>
+    <string name="guardar">Guardar</string>
 </resources>
