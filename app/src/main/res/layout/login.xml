@@ -7,25 +7,43 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="?attr/actionModeCloseDrawable"
+            app:title="Iniciar Sesión"
+            app:titleCentered="true" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextFieldEmail"
         android:layout_width="301dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="130dp"
         android:hint="@string/email"
         android:textColorHint="#546E7A"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextTextEmailAddress2"
             android:layout_width="301dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
-             />
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

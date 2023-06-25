@@ -1,9 +1,11 @@
 package com.uclm.louise.ediaries;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -22,31 +24,32 @@ public class ExpLVAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
+        return listPregunta.size();
+    }
+
+    @Override
+    public int getChildrenCount(int groupPosition) {
+        return 1;
+    }
+
+    @Override
+    public Object getGroup(int groupPosition) {
+        return listPregunta.get(groupPosition);
+    }
+
+    @Override
+    public Object getChild(int groupPosition, int childPosition) {
+        String pregunta = listPregunta.get(groupPosition);
+        return mapChild.get(pregunta);
+    }
+
+    @Override
+    public long getGroupId(int groupPosition) {
         return 0;
     }
 
     @Override
-    public int getChildrenCount(int i) {
-        return 0;
-    }
-
-    @Override
-    public Object getGroup(int i) {
-        return null;
-    }
-
-    @Override
-    public Object getChild(int i, int i1) {
-        return null;
-    }
-
-    @Override
-    public long getGroupId(int i) {
-        return 0;
-    }
-
-    @Override
-    public long getChildId(int i, int i1) {
+    public long getChildId(int groupPosition, int childPosition) {
         return 0;
     }
 
@@ -56,17 +59,28 @@ public class ExpLVAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
-        return null;
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+
+        String tituloPregunta = (String) getGroup(groupPosition);
+        convertView = LayoutInflater.from(context).inflate(R.layout.elv_group, null);
+        TextView lvGroup = (TextView) convertView.findViewById(R.id.lvGroup);
+        lvGroup.setText(tituloPregunta);
+
+        return convertView;
     }
 
     @Override
-    public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
-        return null;
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        String item = (String) getChild(groupPosition, childPosition);
+        convertView = LayoutInflater.from(context).inflate(R.layout.elv_child, null);
+        TextView lvChild = (TextView) convertView.findViewById(R.id.lvChild);
+        lvChild.setText(item);
+
+        return convertView;
     }
 
     @Override
     public boolean isChildSelectable(int i, int i1) {
-        return false;
+        return true;
     }
 }
