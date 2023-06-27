@@ -21,7 +21,7 @@
             style="@style/Widget.App.Toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/top_app_bar_form"
+            app:menu="@menu/top_app_bar"
             app:navigationIcon="@drawable/ic_arrow_left"
             app:title="Registro datos clínicos" />
 
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/en_caso_afirmativo_indica_el_tipo"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialSwitch" />
@@ -123,9 +123,10 @@
         android:layout_marginTop="16dp"
         android:text="@string/indica_si_tienes_alguna_dificultad_en_el_aprendizaje"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldEdadTDAH"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldEdadTDAH" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/menu"
@@ -190,10 +191,21 @@
         android:checked="false"
         android:text="@string/indica_si_recibes_alg_n_tipo_de_intervenci_n_psicol_gica_o_pedag_gica"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldTiempoMedicacion" />
+
+    <Button
+        android:id="@+id/buttonEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Finalizar registro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialSwitchIntervencion" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

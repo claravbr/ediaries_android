@@ -31,120 +31,71 @@
         android:id="@+id/option1Button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="175dp"
-        android:layout_height="200dp"
+        android:layout_height="225dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_rectangle"
-        android:drawableTop="@drawable/ic_task"
         android:clickable="true"
+        android:drawableTop="@drawable/ic_task"
         android:focusable="true"
         app:backgroundTint="#FFEB3B"
+        android:text="@string/mis_tareas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
 
     <!-- Mi progreso -->
-    <TextView
-        android:id="@+id/option1Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/mis_tareas"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/option1Button" />
 
     <Button
         android:id="@+id/option2Button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="175dp"
-        android:layout_height="200dp"
+        android:layout_height="225dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:drawableTop="@drawable/ic_graph"
         android:background="@drawable/rounded_rectangle"
         android:clickable="true"
+        android:drawableTop="@drawable/ic_graph"
         android:focusable="true"
+        android:text="@string/mi_progreso"
         app:backgroundTint="#E15886"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/option1Button"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+        app:layout_constraintTop_toTopOf="@+id/option1Button" />
 
     <!-- Consejos y ayuda -->
-
-    <TextView
-        android:id="@+id/option2Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/mi_progreso"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.643"
-        app:layout_constraintStart_toEndOf="@+id/option1Text"
-        app:layout_constraintTop_toBottomOf="@+id/option2Button" />
 
     <Button
         android:id="@+id/option3Button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="175dp"
-        android:layout_height="200dp"
+        android:layout_height="225dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/rounded_rectangle"
-        android:drawableTop="@drawable/ic_question"
         android:clickable="true"
+        android:drawableTop="@drawable/ic_question"
         android:focusable="true"
+        android:text="@string/consejos_y_ayuda"
         app:backgroundTint="#8BC34A"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/option1Text" />
+        app:layout_constraintTop_toBottomOf="@+id/option1Button" />
 
     <!-- Cómo estoy -->
-
-    <TextView
-        android:id="@+id/option3Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/consejos_y_ayuda"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/option3Button" />
 
     <Button
         android:id="@+id/option4Button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="175dp"
-        android:layout_height="200dp"
+        android:layout_height="225dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:background="@drawable/rounded_rectangle"
-        android:drawableTop="@drawable/ic_child"
         android:clickable="true"
+        android:drawableTop="@drawable/ic_child"
         android:focusable="true"
+        android:text="@string/c_mo_estoy"
         app:backgroundTint="#03A9F4"
-        app:iconPadding="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/option3Button"
-        app:layout_constraintTop_toBottomOf="@+id/option2Text"
-        app:rippleColor="@color/Azul" />
-
-    <TextView
-        android:id="@+id/option4Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/c_mo_estoy"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.637"
-        app:layout_constraintStart_toEndOf="@+id/option3Text"
-        app:layout_constraintTop_toBottomOf="@id/option4Button" />
+        app:layout_constraintTop_toTopOf="@+id/option3Button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
