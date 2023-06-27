@@ -49,4 +49,9 @@
     <string name="escribe_aqu_por_qu_te_has_sentido_as_hoy">Escribe aquí por qué te has sentido así</string>
     <string name="guardar">Guardar</string>
     <string name="iniciar_sesi_n">Iniciar sesión</string>
+    <string name="hoy_has_completado_number_tareas">¡Hoy has completado $number tareas!</string>
+    <string name="m_s_informaci_n">Más información</string>
+    <string name="nueva_tarea">Nueva tarea</string>
+    <string name="boton_para_a_adir_una_nueva_tarea">Boton para añadir una nueva tarea</string>
+    <string name="categoria">Categoria</string>
 </resources>
