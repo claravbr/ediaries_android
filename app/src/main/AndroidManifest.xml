@@ -13,6 +13,24 @@
         android:theme="@style/Theme.Ediaries"
         tools:targetApi="31">
         <activity
+            android:name=".StartAppActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MiProgresoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TareaspendientesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DiarioEmocionesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Consejos"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
