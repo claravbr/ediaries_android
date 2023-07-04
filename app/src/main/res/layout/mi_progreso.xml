@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/top_app_bar"
-            app:navigationIcon="@drawable/ic_ab_back_material"
+            app:navigationIcon="?attr/actionModeCloseDrawable"
             app:title="Mi progreso diario"
             app:titleCentered="true"/>
 
@@ -123,7 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <Button
-        android:id="@+id/masInfoButton"
+        android:id="@+id/outlinedButton"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

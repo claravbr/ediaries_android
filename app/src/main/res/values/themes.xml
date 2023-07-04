@@ -1,5 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
 
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.Ediaries" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
@@ -62,7 +62,7 @@
 
     <style name="ThemeOverlay.App.Toolbar" parent="">
         <item name="colorSurface">#005bc0</item>
-        <item name="colorOnSurface">#005bc0</item>
+        <item name="colorOnSurface">@color/md_theme_light_surface</item>
     </style>
 
     <style name="Theme.Ediaries" parent="Base.Theme.Ediaries" />

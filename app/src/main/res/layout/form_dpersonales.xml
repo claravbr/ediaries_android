@@ -159,7 +159,7 @@
             android:text="@string/masculino" />
 
         <Button
-            android:id="@+id/buttonLogin2"
+            android:id="@+id/button2"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

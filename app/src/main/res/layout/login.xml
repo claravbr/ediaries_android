@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/top_app_bar"
-            app:navigationIcon="@drawable/ic_ab_back_material"
+            app:navigationIcon="?attr/actionModeCloseDrawable"
             app:title="Iniciar Sesión"
             app:titleCentered="true" />
 
@@ -70,7 +70,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonLogin2"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -84,11 +84,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:clickable="true"
         android:text="@string/has_olvidado_tu_contrasenya"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldPassword"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

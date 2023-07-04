@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/newItem"
+        android:contentDescription="@string/boton_para_a_adir_una_nueva_tarea"
+        android:icon="@drawable/ic_newtask"
+        android:title="@string/nueva_tarea"
+        app:showAsAction="ifRoom" />
+
+</menu>
