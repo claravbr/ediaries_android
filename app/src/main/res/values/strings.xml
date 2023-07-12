@@ -54,4 +54,5 @@
     <string name="nueva_tarea">Nueva tarea</string>
     <string name="boton_para_a_adir_una_nueva_tarea">Boton para añadir una nueva tarea</string>
     <string name="categoria">Categoria</string>
+    <string name="ver_en_el_calendario">Ver en el calendario</string>
 </resources>

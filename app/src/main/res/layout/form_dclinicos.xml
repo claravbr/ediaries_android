@@ -78,21 +78,21 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewTDAHTipo">
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonCombinado"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Combinado" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonHiperactivo"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hiperactivo" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonInatento"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -20,16 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/top_app_bar"
-            app:navigationIcon="?attr/actionModeCloseDrawable"
+            app:navigationIcon="@drawable/ic_ab_back_material"
             app:title="Consejos y ayuda"
-            app:titleCentered="true" />
+            app:titleCentered="true"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <ExpandableListView
         android:id="@+id/listaconsejos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
