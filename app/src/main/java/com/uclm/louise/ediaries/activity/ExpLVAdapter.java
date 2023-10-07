@@ -1,4 +1,4 @@
-package com.uclm.louise.ediaries;
+package com.uclm.louise.ediaries.activity;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import com.uclm.louise.ediaries.R;
 
 import java.util.ArrayList;
 import java.util.Map;
