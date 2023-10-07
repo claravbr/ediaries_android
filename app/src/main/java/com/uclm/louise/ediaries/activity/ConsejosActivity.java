@@ -1,4 +1,4 @@
-package com.uclm.louise.ediaries;
+package com.uclm.louise.ediaries.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.uclm.louise.ediaries.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +40,7 @@ public class ConsejosActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ConsejosActivity.this, MainActivity.class);
+                Intent intent = new Intent(ConsejosActivity.this, MenuPrincipalActivity.class);
                 startActivity(intent);
                 Log.i("Info log", "Vuelta al menu principal");
             }

@@ -1,4 +1,4 @@
-package com.uclm.louise.ediaries;
+package com.uclm.louise.ediaries.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,18 +9,19 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.uclm.louise.ediaries.R;
 
-public class MiProgresoActivity extends AppCompatActivity {
+public class DiarioEmocionesActivity extends AppCompatActivity {
 
     MaterialToolbar topAppBar;
-    Button masInfoButton;
+    Button buttonSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mi_progreso);
+        setContentView(R.layout.diario_emociones);
 
-        masInfoButton = findViewById(R.id.masInfoButton);
+        buttonSave = findViewById(R.id.buttonSave);
 
         setSupportActionBar(topAppBar);
         topAppBar = findViewById(R.id.topAppBar);
@@ -28,7 +29,7 @@ public class MiProgresoActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MiProgresoActivity.this, MainActivity.class);
+                Intent intent = new Intent(DiarioEmocionesActivity.this, MenuPrincipalActivity.class);
                 startActivity(intent);
                 Log.i("Info log", "Vuelta al menu principal");
             }

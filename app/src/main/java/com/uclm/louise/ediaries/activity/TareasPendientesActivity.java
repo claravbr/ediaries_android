@@ -1,26 +1,26 @@
-package com.uclm.louise.ediaries;
+package com.uclm.louise.ediaries.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.uclm.louise.ediaries.R;
 
-public class DiarioEmocionesActivity extends AppCompatActivity {
+public class TareasPendientesActivity extends AppCompatActivity {
 
     MaterialToolbar topAppBar;
-    Button buttonSave;
+    Button buttonCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.diario_emociones);
+        setContentView(R.layout.tareas_pendientes);
 
-        buttonSave = findViewById(R.id.buttonSave);
+        buttonCalendar = findViewById(R.id.buttonCalendar);
 
         setSupportActionBar(topAppBar);
         topAppBar = findViewById(R.id.topAppBar);
@@ -28,10 +28,10 @@ public class DiarioEmocionesActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DiarioEmocionesActivity.this, MainActivity.class);
+                Intent intent = new Intent(TareasPendientesActivity.this, MenuPrincipalActivity.class);
                 startActivity(intent);
-                Log.i("Info log", "Vuelta al menu principal");
             }
         });
     }
 }
+
