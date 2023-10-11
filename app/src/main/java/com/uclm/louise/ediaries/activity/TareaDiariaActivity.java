@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.uclm.louise.ediaries.R;
 
-public class TareasPendientesActivity extends AppCompatActivity {
+public class TareaDiariaActivity extends AppCompatActivity {
 
     MaterialToolbar topAppBar;
     Button buttonCalendar;
@@ -18,7 +18,7 @@ public class TareasPendientesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tareas_pendientes);
+        setContentView(R.layout.tarea_diaria);
 
         buttonCalendar = findViewById(R.id.buttonCalendar);
 
@@ -28,7 +28,7 @@ public class TareasPendientesActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TareasPendientesActivity.this, MenuPrincipalActivity.class);
+                Intent intent = new Intent(TareaDiariaActivity.this, MenuPrincipalActivity.class);
                 startActivity(intent);
             }
         });

@@ -26,7 +26,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         buttonMisTareas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuPrincipalActivity.this, TareasPendientesActivity.class);
+                Intent intent = new Intent(MenuPrincipalActivity.this, TareaDiariaActivity.class);
                 startActivity(intent);
                 Log.i("Info log", "Opción mis tareas clickada");
             }

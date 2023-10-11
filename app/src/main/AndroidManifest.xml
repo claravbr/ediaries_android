@@ -27,7 +27,7 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.TareasPendientesActivity"
+            android:name=".activity.TareaDiariaActivity"
             android:exported="false" />
         <activity
             android:name=".activity.StartAppActivity"
