@@ -13,7 +13,7 @@ public class CreateTareaDiariaRequest {
     @SerializedName("nombre")
     private String nombre;
     @SerializedName("fechaIntroduccion")
-    private Object fechaIntroduccion;
+    private String fechaIntroduccion;
     @SerializedName("fechaLimite")
     private String fechaLimite;
     @SerializedName("prioridad")
@@ -38,7 +38,7 @@ public class CreateTareaDiariaRequest {
      * @param prioridad
      * @param categoriaId
      */
-    public CreateTareaDiariaRequest(Integer childId, Integer categoriaId, String nombre, Object fechaIntroduccion, String fechaLimite, String prioridad, Integer duracion) {
+    public CreateTareaDiariaRequest(Integer childId, Integer categoriaId, String nombre, String fechaIntroduccion, String fechaLimite, String prioridad, Integer duracion) {
         super();
         this.childId = childId;
         this.categoriaId = categoriaId;
@@ -92,11 +92,11 @@ public class CreateTareaDiariaRequest {
         return fechaIntroduccion;
     }
 
-    public void setFechaIntroduccion(Object fechaIntroduccion) {
+    public void setFechaIntroduccion(String fechaIntroduccion) {
         this.fechaIntroduccion = fechaIntroduccion;
     }
 
-    public CreateTareaDiariaRequest withFechaIntroduccion(Object fechaIntroduccion) {
+    public CreateTareaDiariaRequest withFechaIntroduccion(String fechaIntroduccion) {
         this.fechaIntroduccion = fechaIntroduccion;
         return this;
     }
