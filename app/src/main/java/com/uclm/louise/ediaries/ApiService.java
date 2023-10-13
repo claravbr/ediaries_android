@@ -1,4 +1,4 @@
-package com.uclm.louise.ediaries.data;
+package com.uclm.louise.ediaries;
 
 import static com.uclm.louise.ediaries.utils.Constantes.LOGIN_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.POSTS_URL;

@@ -19,6 +19,11 @@ public class Usuario {
     @SerializedName("fotoPath")
     private String fotoPath;
 
+    @SerializedName("updated_at")
+    private String updatedAt;
+    @SerializedName("created_at")
+    private String createdAt;
+
     public Usuario(String id, String nombre, String apellidos, String email, String fotoPath) {
         this.id = id;
         this.nombre = nombre;
@@ -28,6 +33,22 @@ public class Usuario {
     }
 
     public Usuario() {
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getId() {

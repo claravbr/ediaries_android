@@ -1,19 +1,22 @@
-package com.uclm.louise.ediaries.data;
+package com.uclm.louise.ediaries.data.clients;
 
 import static com.uclm.louise.ediaries.utils.Constantes.BASE_URL;
 
 import android.content.Context;
+
+import com.uclm.louise.ediaries.ApiService;
+import com.uclm.louise.ediaries.data.AuthInterceptor;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private ApiService apiService;
+    private static ApiService apiService;
 
-    public ApiService getApiService(Context context) {
+    public static ApiService getApiService(Context context) {
 
-        // Initialize ApiService if not initialized yet
+        // Initialize RegisterService if not initialized yet
         if (apiService == null) {
             OkHttpClient okHttpClient = okhttpClient(context);
 
@@ -32,7 +35,7 @@ public class ApiClient {
     /**
      * Initialize OkhttpClient with our interceptor
      */
-    private OkHttpClient okhttpClient(Context context) {
+    private static OkHttpClient okhttpClient(Context context) {
         return new OkHttpClient.Builder()
                 .addInterceptor(new AuthInterceptor(context))
                 .build();

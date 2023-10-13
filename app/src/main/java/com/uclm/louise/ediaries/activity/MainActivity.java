@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.uclm.louise.ediaries.R;
-import com.uclm.louise.ediaries.data.ApiClient;
+import com.uclm.louise.ediaries.data.clients.ApiClient;
 import com.uclm.louise.ediaries.data.responses.PostsResponse;
 import com.uclm.louise.ediaries.utils.SessionManager;
 

@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.uclm.louise.ediaries.R;
-import com.uclm.louise.ediaries.data.ApiClient;
+import com.uclm.louise.ediaries.data.clients.ApiClient;
 import com.uclm.louise.ediaries.data.requests.LoginRequest;
 import com.uclm.louise.ediaries.data.responses.LoginResponse;
 import com.uclm.louise.ediaries.utils.SessionManager;
