@@ -20,23 +20,23 @@ public class StartAppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_app);
 
+        // -- INICIAR SESION --
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StartAppActivity.this, LoginActivity.class);
                 startActivity(intent);
-                Log.i("Info log", "Opción iniciar sesión clickada");
             }
         });
 
+        // -- REGISTRARSE --
         buttonRegister = findViewById(R.id.buttonRegister);
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StartAppActivity.this, FormRegistroActivity.class);
                 startActivity(intent);
-                Log.i("Info log", "Opción registro clickada");
             }
         });
 

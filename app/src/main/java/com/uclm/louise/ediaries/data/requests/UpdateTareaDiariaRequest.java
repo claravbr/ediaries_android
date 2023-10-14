@@ -1,6 +1,5 @@
 package com.uclm.louise.ediaries.data.requests;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class UpdateTareaDiariaRequest {

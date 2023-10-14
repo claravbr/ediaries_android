@@ -21,7 +21,7 @@
             style="@style/Widget.App.Toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/top_app_bar_form"
+            app:menu="@menu/top_app_bar"
             app:navigationIcon="@drawable/ic_arrow_left"
             app:title="Registro datos personales" />
 
@@ -31,14 +31,13 @@
         android:id="@+id/outlinedFechanacimiento"
         android:layout_width="301dp"
         android:layout_height="wrap_content"
-        android:hint="@string/mm_dd_yy"
+        android:layout_marginTop="32dp"
+        android:hint="@string/fecha_de_nacimiento"
         android:textColorHint="#546E7A"
-        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/outlinedTextFieldHeight"
-        tools:layout_editor_absoluteY="474dp">
+        app:layout_constraintTop_toBottomOf="@id/outlinedTextFieldHeight">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editFechanacimiento"
@@ -52,7 +51,7 @@
         android:id="@+id/outlinedTextFieldWeight"
         android:layout_width="301dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:hint="@string/peso_kg"
         android:textColorHint="#546E7A"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +71,7 @@
         android:id="@+id/outlinedTextFieldHeight"
         android:layout_width="301dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:hint="@string/altura_m"
         android:textColorHint="#546E7A"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,6 +91,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_weight="1"
         android:text="@string/sexo"
         android:textAlignment="center"
@@ -100,15 +100,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="259dp" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        tools:layout_editor_absoluteY="259dp">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:singleSelection="true">
 
         <Button
             android:id="@+id/buttonMasc"
