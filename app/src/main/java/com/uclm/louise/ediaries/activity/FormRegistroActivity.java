@@ -27,6 +27,8 @@ import com.uclm.louise.ediaries.data.clients.RegistroClient;
 import com.uclm.louise.ediaries.data.models.Usuario;
 import com.uclm.louise.ediaries.data.requests.CreateUsuarioRequest;
 
+import java.util.regex.Pattern;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,15 +41,16 @@ public class FormRegistroActivity extends AppCompatActivity {
     private Button buttonAddPhoto;
     private ImageView imageView;
     private ActivityResultLauncher<String> imagePickerLauncher;
-
     private String fotoPath = null;
+
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_registro);
 
-        // -- SIGUIENTE --
+        // -- SIGUIENTE (FormDPersonalesActivity) --
         buttonNext = findViewById(R.id.buttonNext);
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +81,7 @@ public class FormRegistroActivity extends AppCompatActivity {
                 }
             }
         });
+
         buttonAddPhoto.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -119,6 +123,8 @@ public class FormRegistroActivity extends AppCompatActivity {
 
         // Comprobar si se ha quedado algun campo obligatorio sin rellenar
         validateFields(editTextName, editTextLastName, editTextEmail, editTextPassword);
+        // Comprobar que el email sea válido
+        validateEmail(editTextEmail);
 
         // Crear una solicitud
         CreateUsuarioRequest usuarioRequest = new CreateUsuarioRequest(nombre, apellidos, email, password, fotoPath);
@@ -150,6 +156,13 @@ public class FormRegistroActivity extends AppCompatActivity {
                 Toast.makeText(FormRegistroActivity.this, "Error en la solicitud", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void validateEmail(TextInputEditText editTextEmail) {
+        if(!Pattern.matches(EMAIL_REGEX, editTextEmail.getText().toString())){
+            editTextEmail.setError("Email no válido");
+            editTextEmail.requestFocus();
+        }
     }
 
     private void validateFields(TextInputEditText... editTexts) {
