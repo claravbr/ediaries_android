@@ -117,6 +117,9 @@ public class FormRegistroActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
 
+        // Comprobar si se ha quedado algun campo obligatorio sin rellenar
+        validateFields(editTextName, editTextLastName, editTextEmail, editTextPassword);
+
         // Crear una solicitud
         CreateUsuarioRequest usuarioRequest = new CreateUsuarioRequest(nombre, apellidos, email, password, fotoPath);
 
@@ -148,4 +151,17 @@ public class FormRegistroActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void validateFields(TextInputEditText... editTexts) {
+        String messageError = "Este campo no puede estar vacío";
+
+        for (TextInputEditText editText : editTexts) {
+            if (editText.getText().toString().isEmpty()) {
+                editText.setError(messageError);
+                editText.requestFocus();
+            }
+        }
+    }
+
+
 }
