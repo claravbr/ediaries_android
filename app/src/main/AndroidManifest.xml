@@ -22,7 +22,7 @@
             android:name=".activity.StartAppActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.FormRegistroActivity"
+            android:name=".activity.FormDclinicosActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
@@ -44,6 +44,12 @@
             android:exported="false" />
         <activity
             android:name=".activity.FormDpersonalesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.FormDescolaresActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.FormRegistroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

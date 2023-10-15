@@ -31,7 +31,7 @@
         android:id="@+id/outlinedTextFieldEnfermedad"
         android:layout_width="301dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:hint="@string/indica_si_tienes_alguna_enfermedad"
         android:textColorHint="#546E7A"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,8 +50,8 @@
         android:id="@+id/materialSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:checked="true"
+        android:layout_marginTop="8dp"
+        android:checked="false"
         android:text="@string/tienes_tdah"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
         android:id="@+id/textViewTDAHTipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/en_caso_afirmativo_indica_el_tipo"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTDAHTipo">
+        app:layout_constraintTop_toBottomOf="@+id/textViewTDAHTipo"
+        app:singleSelection="true">
 
         <Button
             android:id="@+id/buttonCombinado"
@@ -103,6 +104,7 @@
         android:id="@+id/outlinedTextFieldEdadTDAH"
         android:layout_width="301dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:hint="@string/en_caso_afirmativo_a_qu_edad_te_diagnosticaron_tdah"
         android:textColorHint="#546E7A"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +145,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
-            app:simpleItems="@array/nivel_academico" />
+            app:simpleItems="@array/dificultad_aprendizaje" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -193,6 +195,7 @@
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldTiempoMedicacion" />
 

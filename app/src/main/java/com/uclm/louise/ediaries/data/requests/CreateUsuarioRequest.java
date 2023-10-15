@@ -39,14 +39,6 @@ public class CreateUsuarioRequest {
         this.fotoPath = fotoPath;
     }
 
-    public CreateUsuarioRequest(String nombre, String apellidos, String email, String password) {
-        super();
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.email = email;
-        this.password = password;
-    }
-
     public String getNombre() {
         return nombre;
     }

@@ -16,4 +16,11 @@
         <item>1º Bachillerato</item>
         <item>2º Bachillerato</item>
     </string-array>
+
+    <string-array name="dificultad_aprendizaje">
+        <item>Dislexia</item>
+        <item>Discalculia</item>
+        <item>Disgrafia</item>
+        <item>Transtorno de Coordinación del Movimiento</item>
+    </string-array>
 </resources>
