@@ -53,5 +53,5 @@
     <string name="boton_para_a_adir_una_nueva_tarea">Boton para añadir una nueva tarea</string>
     <string name="categoria">Categoria</string>
     <string name="ver_en_el_calendario">Ver en el calendario</string>
-    <string name="fecha_de_nacimiento">Fecha de nacimiento (mm/dd/yy)</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento (dd/mm/yyyy)</string>
 </resources>

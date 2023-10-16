@@ -39,6 +39,14 @@ public class CreateDPersonalesRequest {
         this.fnacimiento = fnacimiento;
     }
 
+    public CreateDPersonalesRequest(String sexo, Float peso, Float altura, String fnacimiento) {
+        super();
+        this.sexo = sexo;
+        this.peso = peso;
+        this.altura = altura;
+        this.fnacimiento = fnacimiento;
+    }
+
     public Integer getChildId() {
         return childId;
     }

@@ -19,6 +19,7 @@ public class Constantes {
     //Resources
     public static final String NEW = "new";
     public static final String UPDATE = "update";
+    public static final String GET_CHILD = "get-child/";
 
 
 }
