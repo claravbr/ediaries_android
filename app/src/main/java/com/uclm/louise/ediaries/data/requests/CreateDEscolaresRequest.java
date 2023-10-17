@@ -35,6 +35,12 @@ public class CreateDEscolaresRequest {
         this.repetidor = repetidor;
     }
 
+    public CreateDEscolaresRequest(String nivelAcademico, String centroEducativo, Boolean repetidor) {
+        this.nivelAcademico = nivelAcademico;
+        this.centroEducativo = centroEducativo;
+        this.repetidor = repetidor;
+    }
+
     public Integer getChildId() {
         return childId;
     }

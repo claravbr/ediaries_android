@@ -78,7 +78,7 @@ public class FormDpersonalesActivity extends AppCompatActivity {
                 sexo = String.valueOf(Sexo.Femenino);
             }
 
-            // Crear una solicitud
+            // Rellenar contexto
             RegistroContext registroContext = RegistroContext.getInstance();
 
             CreateDPersonalesRequest dPersonalesRequest = new CreateDPersonalesRequest(sexo, peso, altura, fechaNacimiento);
