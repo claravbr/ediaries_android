@@ -55,14 +55,32 @@ public class FormActividadFavoritaActivity  extends AppCompatActivity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RegistroContext registroContext = RegistroContext.getInstance();
-                registroContext.setActividadFavorita(actividadesFavoritas);
 
-                Intent intent = new Intent(FormActividadFavoritaActivity.this, FormDclinicosActivity.class);
-                startActivity(intent);
-                Log.i("Info log", "Siguiente");
+                // Comprobar si se ha añadido al menos una actividad favorita
+                if (checkActivities()) {
+                    RegistroContext registroContext = RegistroContext.getInstance();
+                    registroContext.setActividadFavorita(actividadesFavoritas);
+
+                    Intent intent = new Intent(FormActividadFavoritaActivity.this, FormDclinicosActivity.class);
+                    startActivity(intent);
+                    Log.i("Info log", "Siguiente");
+                }
             }
         });
+    }
+
+    private boolean checkActivities() {
+        ChipGroup chipGroup = findViewById(R.id.chipGroupActivities);
+        TextInputLayout textInputLayoutActivity = findViewById(R.id.textInputLayoutActivity);
+        TextInputEditText editTextActivity = (TextInputEditText) textInputLayoutActivity.getEditText();
+
+        if(chipGroup.getChildCount() > 0){
+            return true;
+        } else {
+            editTextActivity.setError("Añade al menos una actividad favorita");
+            editTextActivity.requestFocus();
+            return false;
+        }
     }
 
     private void addChipToGroup(String activity) {
