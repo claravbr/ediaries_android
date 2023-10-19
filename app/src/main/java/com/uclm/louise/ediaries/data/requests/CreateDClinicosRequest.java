@@ -32,6 +32,18 @@ public class CreateDClinicosRequest {
     public CreateDClinicosRequest() {
     }
 
+    public CreateDClinicosRequest(String enfermedad, Boolean tdah, String tdahTipo, Integer tdahEdad, String dificultad, Boolean medicacion, String medicacionAntiguedad, String medicacionInfo, Boolean intervencion) {
+        this.enfermedad = enfermedad;
+        this.tdah = tdah;
+        this.tdahTipo = tdahTipo;
+        this.tdahEdad = tdahEdad;
+        this.dificultad = dificultad;
+        this.medicacion = medicacion;
+        this.medicacionAntiguedad = medicacionAntiguedad;
+        this.medicacionInfo = medicacionInfo;
+        this.intervencion = intervencion;
+    }
+
     /**
      *
      * @param tdah

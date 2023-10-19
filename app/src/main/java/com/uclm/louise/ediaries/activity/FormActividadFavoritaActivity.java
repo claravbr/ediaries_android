@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.textfield.TextInputEditText;
@@ -23,6 +24,7 @@ public class FormActividadFavoritaActivity  extends AppCompatActivity {
     private List<String> actividadesFavoritas = new ArrayList<>();
     Button buttonAddActivity;
     Button buttonNext;
+    private MaterialToolbar topAppBar;
 
     @Override
     protected void onCreate(Bundle savedInstaneState) {
@@ -65,6 +67,19 @@ public class FormActividadFavoritaActivity  extends AppCompatActivity {
                     startActivity(intent);
                     Log.i("Info log", "Siguiente");
                 }
+            }
+        });
+
+        // -- VOLVER A FORM REGISTRO DESCOLARES --
+        topAppBar = findViewById(R.id.topAppBar);
+        setSupportActionBar(topAppBar);
+
+        topAppBar.setNavigationIcon(R.drawable.ic_ab_back_material);
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FormActividadFavoritaActivity.this, FormDescolaresActivity.class);
+                startActivity(intent);
             }
         });
     }
