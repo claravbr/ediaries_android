@@ -5,6 +5,9 @@ import com.uclm.louise.ediaries.data.requests.CreateDEscolaresRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDPersonalesRequest;
 import com.uclm.louise.ediaries.data.requests.CreateUsuarioRequest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegistroContext {
 
     // SINGLETON
@@ -14,6 +17,7 @@ public class RegistroContext {
     private CreateDPersonalesRequest dPersonalesRequest;
     private CreateDClinicosRequest dClinicosRequest;
     private CreateDEscolaresRequest dEscolaresRequest;
+    private List<String> actividadFavorita;
 
     private RegistroContext() {
     }
@@ -55,5 +59,13 @@ public class RegistroContext {
 
     public void setdEscolaresRequest(CreateDEscolaresRequest dEscolaresRequest) {
         this.dEscolaresRequest = dEscolaresRequest;
+    }
+
+    public List<String> getActividadFavorita() {
+        return actividadFavorita;
+    }
+
+    public void setActividadFavorita(List<String> actividadFavorita) {
+        this.actividadFavorita = actividadFavorita;
     }
 }

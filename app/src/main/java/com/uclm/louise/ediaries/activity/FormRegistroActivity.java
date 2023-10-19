@@ -101,7 +101,6 @@ public class FormRegistroActivity extends AppCompatActivity {
     }
 
     private void nextStep(String fotoPath) {
-        RegistroService registroService = RegistroClient.getRegistroService(this);
 
         TextInputEditText editTextName = findViewById(R.id.editTextName);
         TextInputEditText editTextLastName = findViewById(R.id.editTextLastName);
