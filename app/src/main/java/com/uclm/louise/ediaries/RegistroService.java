@@ -10,11 +10,11 @@ import com.uclm.louise.ediaries.data.models.Child;
 import com.uclm.louise.ediaries.data.models.DClinicos;
 import com.uclm.louise.ediaries.data.models.DEscolares;
 import com.uclm.louise.ediaries.data.models.DPersonales;
-import com.uclm.louise.ediaries.data.models.Usuario;
 import com.uclm.louise.ediaries.data.requests.CreateDClinicosRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDEscolaresRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDPersonalesRequest;
 import com.uclm.louise.ediaries.data.requests.CreateUsuarioRequest;
+import com.uclm.louise.ediaries.data.responses.CreateUsuarioResult;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -25,7 +25,7 @@ import retrofit2.http.Path;
 public interface RegistroService {
 
     @POST(USUARIO_URL)
-    Call<Usuario> createUsuario(@Body CreateUsuarioRequest usuario);
+    Call<CreateUsuarioResult> createUsuario(@Body CreateUsuarioRequest usuario);
 
     @POST(USUARIO_URL+DPERSONALES_URL)
     Call<DPersonales> createDPersonales(@Body CreateDPersonalesRequest dpersonales);
@@ -35,8 +35,5 @@ public interface RegistroService {
 
     @POST(USUARIO_URL+DESCOLARES_URL)
     Call<DEscolares> createDEscolares(@Body CreateDEscolaresRequest descolares);
-
-    @GET(USUARIO_URL+GET_CHILD+"{usuarioId}")
-    Call<Child> getChildByUsuarioId(@Path("usuarioId") int usuarioId);
 
 }

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.uclm.louise.ediaries.RegistroService;
+import com.uclm.louise.ediaries.data.AuthInterceptor;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -30,13 +31,12 @@ public class RegistroClient {
             });
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-            httpClient.addInterceptor(loggingInterceptor);
+            OkHttpClient okHttpClient = okhttpClient(context);
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .client(httpClient.build())
+                    .client(okHttpClient)
                     .build();
 
             registroService = retrofit.create(RegistroService.class);
@@ -45,5 +45,13 @@ public class RegistroClient {
         return registroService;
     }
 
+    /**
+     * Initialize OkhttpClient with our interceptor
+     */
+    private static OkHttpClient okhttpClient(Context context) {
+        return new OkHttpClient.Builder()
+                .addInterceptor(new AuthInterceptor(context))
+                .build();
+    }
 
 }
