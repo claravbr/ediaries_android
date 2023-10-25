@@ -150,13 +150,12 @@ public class FormDclinicosActivity extends AppCompatActivity {
             RegistroContext registroContext = RegistroContext.getInstance();
             registroContext.setdClinicosRequest(dClinicosRequest);
 
+            Intent intent = new Intent(FormDclinicosActivity.this, LoadingActivity.class);
+            startActivity(intent);
+
             RegistroManager registroManager = new RegistroManager();
             registroManager.registrarUsuario(this);
 
-            // REGISTRO COMPLETO REALIZADO CON EXITO
-            Intent intent = new Intent(FormDclinicosActivity.this, MenuPrincipalActivity.class);
-            startActivity(intent);
-            Log.i("Info log", "Pantalla de bienvenida");
 
         }
 
