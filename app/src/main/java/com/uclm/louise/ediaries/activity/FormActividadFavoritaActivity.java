@@ -5,24 +5,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.uclm.louise.ediaries.R;
 import com.uclm.louise.ediaries.data.models.RegistroContext;
+import com.uclm.louise.ediaries.data.requests.CreateActividadesFavoritasRequest;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FormActividadFavoritaActivity  extends AppCompatActivity {
 
-    private List<String> actividadesFavoritas = new ArrayList<>();
-    Button buttonAddActivity;
+    private List<Integer> actividadesFavoritas = new ArrayList<>();
     Button buttonNext;
     private MaterialToolbar topAppBar;
 
@@ -32,25 +31,32 @@ public class FormActividadFavoritaActivity  extends AppCompatActivity {
         super.onCreate(savedInstaneState);
         setContentView(R.layout.form_actividadesfavoritas);
 
-        // Añadir actividades favoritas
-        buttonAddActivity = findViewById(R.id.buttonAddActivity);
-        buttonAddActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextInputLayout textInputLayoutActivity = findViewById(R.id.textInputLayoutActivity);
-                TextInputEditText editTextActivity = (TextInputEditText) textInputLayoutActivity.getEditText();
+        ChipGroup chipGroup = findViewById(R.id.chipGroupActivities);
 
-                if (editTextActivity != null){
-                    String activity = editTextActivity.getText().toString().trim();
+        String[] actividadesArray = getResources().getStringArray(R.array.actividades_favoritas);
 
-                    if(!activity.isEmpty()){
-                        actividadesFavoritas.add(activity);
-                        addChipToGroup(activity);
-                        editTextActivity.setText("");
+        for (String actividad : actividadesArray) {
+            String[] parts = actividad.split(",");
+            if (parts.length == 2) {
+                String nombre = parts[0];
+                int idActividad = Integer.parseInt(parts[1]);
+
+                Chip chip = new Chip(this);
+                chip.setText(nombre);
+                chip.setCheckable(true);
+
+                // Listener para manejar la selección
+                chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    if (isChecked) {
+                        actividadesFavoritas.add(idActividad);
+                    } else {
+                        actividadesFavoritas.remove(Integer.valueOf(idActividad));
                     }
-                }
+                });
+
+                chipGroup.addView(chip);
             }
-        });
+        }
 
         // -- SIGUIENTE (FormDClinicosActivity) --
         buttonNext = findViewById(R.id.buttonSubmit);
@@ -59,9 +65,13 @@ public class FormActividadFavoritaActivity  extends AppCompatActivity {
             public void onClick(View view) {
 
                 // Comprobar si se ha añadido al menos una actividad favorita
-                if (checkActivities()) {
+                if (checkActivities(chipGroup)) {
+                    CreateActividadesFavoritasRequest actividadesFavoritasRequest = new CreateActividadesFavoritasRequest();
+                    actividadesFavoritasRequest.setActividadfavoritaIds(actividadesFavoritas);
+
+
                     RegistroContext registroContext = RegistroContext.getInstance();
-                    registroContext.setActividadFavorita(actividadesFavoritas);
+                    registroContext.setActividadesFavoritasRequest(actividadesFavoritasRequest);
 
                     Intent intent = new Intent(FormActividadFavoritaActivity.this, FormDclinicosActivity.class);
                     startActivity(intent);
@@ -84,32 +94,19 @@ public class FormActividadFavoritaActivity  extends AppCompatActivity {
         });
     }
 
-    private boolean checkActivities() {
-        ChipGroup chipGroup = findViewById(R.id.chipGroupActivities);
-        TextInputLayout textInputLayoutActivity = findViewById(R.id.textInputLayoutActivity);
-        TextInputEditText editTextActivity = (TextInputEditText) textInputLayoutActivity.getEditText();
+    private boolean checkActivities(ChipGroup chipGroup) {
 
-        if(chipGroup.getChildCount() > 0){
-            return true;
-        } else {
-            editTextActivity.setError("Añade al menos una actividad favorita");
-            editTextActivity.requestFocus();
-            return false;
-        }
-    }
-
-    private void addChipToGroup(String activity) {
-        ChipGroup chipGroup = findViewById(R.id.chipGroupActivities);
-        Chip chip = new Chip(this);
-        chip.setText(activity);
-        chip.setCloseIconVisible(true);
-        chip.setOnCloseIconClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                actividadesFavoritas.remove(chip.getText().toString());
-                chipGroup.removeView(chip);
+        for (int i = 0; i < chipGroup.getChildCount(); i++) {
+            View child = chipGroup.getChildAt(i);
+            if (child instanceof Chip) {
+                Chip chip = (Chip) child;
+                if (chip.isChecked()) {
+                    return true;
+                }
             }
-        });
-        chipGroup.addView(chip);
+        }
+        Toast.makeText(this, "Selecciona al menos una actividad favorita", Toast.LENGTH_SHORT).show();
+        return false;
     }
+
 }

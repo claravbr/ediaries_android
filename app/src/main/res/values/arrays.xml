@@ -23,4 +23,17 @@
         <item>Disgrafia</item>
         <item>Transtorno de Coordinación del Movimiento</item>
     </string-array>
+
+    <string-array name="actividades_favoritas">
+        <item>Jugar al fútbol,1</item>
+        <item>Pintar y dibujar,2</item>
+        <item>Bailar,3</item>
+        <item>Leer libros,4</item>
+        <item>Jugar videojuegos,5</item>
+        <item>Hacer manualidades,6</item>
+        <item>Montar en bicicleta,7</item>
+        <item>Cantar,8</item>
+        <item>Ver películas,9</item>
+        <item>Hacer deportes acuáticos,10</item>
+    </string-array>
 </resources>

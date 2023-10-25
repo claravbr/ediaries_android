@@ -15,6 +15,7 @@ public class Constantes {
     public static final String DPERSONALES_URL = "datos-personales/";
     public static final String DCLINICOS_URL = "datos-clinicos/";
     public static final String DESCOLARES_URL = "datos-escolares/";
+    public static final String ACTIVIDADES_FAVORITAS_URL = "actividades-favoritas/";
 
     //Resources
     public static final String NEW = "new";

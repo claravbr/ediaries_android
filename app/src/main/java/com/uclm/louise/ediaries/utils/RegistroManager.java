@@ -1,14 +1,10 @@
 package com.uclm.louise.ediaries.utils;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.uclm.louise.ediaries.RegistroService;
-import com.uclm.louise.ediaries.activity.FormActividadFavoritaActivity;
-import com.uclm.louise.ediaries.activity.FormDclinicosActivity;
-import com.uclm.louise.ediaries.activity.FormDescolaresActivity;
+import com.uclm.louise.ediaries.data.clients.RegistroClient;
 import com.uclm.louise.ediaries.data.models.*;
 import com.uclm.louise.ediaries.data.requests.*;
 import com.uclm.louise.ediaries.data.responses.CreateUsuarioResult;
@@ -19,14 +15,15 @@ import retrofit2.Response;
 
 public class RegistroManager {
     private RegistroService registroService;
-    private String errorServerMessage = "Error en la llamada al servidor";
-    private String errorRegisterMessage = "Error en el registro";
+    private String errorServerMessage = "Error en la llamada al servidor: ";
+    private String errorRegisterMessage = "Error en el registro: ";
     private RegistroContext registroContext = RegistroContext.getInstance();
 
     // Se realiza el registro completo, haciendo las llamadas de cada pantalla
     // Usuario -> Datos personales -> Datos escolares -> Actividades favoritas -> Datos clinicos
 
-    public void registrarUsuario(){
+    public void registrarUsuario(Context context){
+        registroService = RegistroClient.getRegistroService(context);
         CreateUsuarioRequest usuarioRequest = registroContext.getUsuarioRequest();
 
         registroService.createUsuario(usuarioRequest).enqueue(new Callback<CreateUsuarioResult>() {
@@ -90,8 +87,25 @@ public class RegistroManager {
     }
 
     private void registrarActividadFavorita(Integer childId) {
-        // Se hará una llamada a crear actividades favoritas por cada elementos en el array de registroContext
-        registrarDClinicos(childId);
+
+        CreateActividadesFavoritasRequest actividadesFavoritasRequest = registroContext.getActividadesFavoritasRequest();
+        actividadesFavoritasRequest.setChildId(childId);
+
+        registroService.createActividadesFavoritas(actividadesFavoritasRequest).enqueue(new Callback<Response<Void>>() {
+            @Override
+            public void onResponse(Call<Response<Void>> call, Response<Response<Void>> response) {
+                if(response.code() == 204){
+                    registrarDClinicos(childId);
+                } else {
+                    Log.e("Error log", errorRegisterMessage + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Response<Void>> call, Throwable t) {
+                Log.e("Error log", errorServerMessage + t.getMessage());
+            }
+        });
     }
 
     private void registrarDClinicos(Integer childId){

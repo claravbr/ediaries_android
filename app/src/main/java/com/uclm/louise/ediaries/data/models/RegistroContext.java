@@ -1,11 +1,11 @@
 package com.uclm.louise.ediaries.data.models;
 
+import com.uclm.louise.ediaries.data.requests.CreateActividadesFavoritasRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDClinicosRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDEscolaresRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDPersonalesRequest;
 import com.uclm.louise.ediaries.data.requests.CreateUsuarioRequest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RegistroContext {
@@ -17,9 +17,17 @@ public class RegistroContext {
     private CreateDPersonalesRequest dPersonalesRequest;
     private CreateDClinicosRequest dClinicosRequest;
     private CreateDEscolaresRequest dEscolaresRequest;
-    private List<String> actividadFavorita;
+    private CreateActividadesFavoritasRequest actividadesFavoritasRequest;
 
     private RegistroContext() {
+    }
+
+    public CreateActividadesFavoritasRequest getActividadesFavoritasRequest() {
+        return actividadesFavoritasRequest;
+    }
+
+    public void setActividadesFavoritasRequest(CreateActividadesFavoritasRequest actividadesFavoritasRequest) {
+        this.actividadesFavoritasRequest = actividadesFavoritasRequest;
     }
 
     public static synchronized RegistroContext getInstance() {
@@ -59,13 +67,5 @@ public class RegistroContext {
 
     public void setdEscolaresRequest(CreateDEscolaresRequest dEscolaresRequest) {
         this.dEscolaresRequest = dEscolaresRequest;
-    }
-
-    public List<String> getActividadFavorita() {
-        return actividadFavorita;
-    }
-
-    public void setActividadFavorita(List<String> actividadFavorita) {
-        this.actividadFavorita = actividadFavorita;
     }
 }

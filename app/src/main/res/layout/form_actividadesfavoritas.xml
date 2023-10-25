@@ -36,38 +36,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintWidth_percent="0.8"
-        app:singleLine="true">
-        <!-- Las chips se agregan dinámicamente aquí -->
+        app:layout_constraintWidth_percent="0.8">
+
+        <!-- Las chips se agregan dinámicamente -->
     </com.google.android.material.chip.ChipGroup>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutActivity"
-        android:layout_width="301dp"
-        android:layout_height="wrap_content"
-        android:hint="Añade tus actividades favoritas"
-        app:layout_constraintTop_toBottomOf="@id/chipGroupActivities"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/buttonAddActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/a_adir"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutActivity" />
 
     <Button
         android:id="@+id/buttonSubmit"
@@ -78,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonAddActivity" />
+        app:layout_constraintTop_toBottomOf="@id/chipGroupActivities" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
