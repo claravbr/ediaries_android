@@ -16,7 +16,6 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     @POST(LOGIN_URL)
-    @FormUrlEncoded
     Call<LoginResponse> login(@Body LoginRequest request);
 
     @GET(POSTS_URL)
