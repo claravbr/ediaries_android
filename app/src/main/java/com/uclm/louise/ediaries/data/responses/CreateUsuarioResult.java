@@ -9,6 +9,16 @@ public class CreateUsuarioResult {
     private Usuario usuario;
     @SerializedName("child_id")
     private Integer childId;
+    @SerializedName("token")
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     /**
      * No args constructor for use in serialization

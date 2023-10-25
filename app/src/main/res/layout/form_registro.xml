@@ -96,7 +96,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/outlinedTextFieldEmail"
         android:hint="@string/contrasenya"
-        android:textColorHint="#546E7A">
+        android:textColorHint="#546E7A"
+        app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPassword"

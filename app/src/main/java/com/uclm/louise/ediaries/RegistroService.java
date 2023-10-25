@@ -5,6 +5,7 @@ import static com.uclm.louise.ediaries.utils.Constantes.DCLINICOS_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.DESCOLARES_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.DPERSONALES_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.GET_CHILD;
+import static com.uclm.louise.ediaries.utils.Constantes.REGISTER_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.USUARIO_URL;
 
 import com.uclm.louise.ediaries.data.models.Child;
@@ -27,7 +28,7 @@ import retrofit2.http.Path;
 
 public interface RegistroService {
 
-    @POST(USUARIO_URL)
+    @POST(USUARIO_URL+REGISTER_URL)
     Call<CreateUsuarioResult> createUsuario(@Body CreateUsuarioRequest usuario);
 
     @POST(USUARIO_URL+DPERSONALES_URL)

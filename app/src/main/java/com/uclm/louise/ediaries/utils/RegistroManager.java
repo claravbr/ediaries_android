@@ -1,9 +1,14 @@
 package com.uclm.louise.ediaries.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.uclm.louise.ediaries.RegistroService;
+import com.uclm.louise.ediaries.activity.LoadingActivity;
+import com.uclm.louise.ediaries.activity.MenuPrincipalActivity;
+import com.uclm.louise.ediaries.activity.StartAppActivity;
 import com.uclm.louise.ediaries.data.clients.RegistroClient;
 import com.uclm.louise.ediaries.data.models.*;
 import com.uclm.louise.ediaries.data.requests.*;
@@ -23,6 +28,7 @@ public class RegistroManager {
     // Usuario -> Datos personales -> Datos escolares -> Actividades favoritas -> Datos clinicos
 
     public void registrarUsuario(Context context){
+
         registroService = RegistroClient.getRegistroService(context);
         CreateUsuarioRequest usuarioRequest = registroContext.getUsuarioRequest();
 
@@ -31,20 +37,22 @@ public class RegistroManager {
             public void onResponse(Call<CreateUsuarioResult> call, Response<CreateUsuarioResult> response) {
                 if(response.code() == 200){
                     Integer childId = response.body().getChildId();
-                    registrarDPersonales(childId);
+                    registrarDPersonales(childId, context);
                 } else {
+                    error(context);
                     Log.e("Error log", errorRegisterMessage + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<CreateUsuarioResult> call, Throwable t) {
+                error(context);
                 Log.e("Error log", errorServerMessage + t.getMessage());
             }
         });
     }
 
-    private void registrarDPersonales(Integer childId) {
+    private void registrarDPersonales(Integer childId, Context context) {
         CreateDPersonalesRequest dPersonalesRequest = registroContext.getdPersonalesRequest();
         dPersonalesRequest.setChildId(childId);
 
@@ -52,20 +60,22 @@ public class RegistroManager {
             @Override
             public void onResponse(Call<DPersonales> call, Response<DPersonales> response) {
                 if(response.code() == 200){
-                    registrarDEscolares(childId);
+                    registrarDEscolares(childId, context);
                 } else {
+                    error(context);
                     Log.e("Error log", errorRegisterMessage + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<DPersonales> call, Throwable t) {
+                error(context);
                 Log.e("Error log", errorServerMessage + t.getMessage());
             }
         });
     }
 
-    private void registrarDEscolares(Integer childId) {
+    private void registrarDEscolares(Integer childId, Context context) {
         CreateDEscolaresRequest dEscolaresRequest = registroContext.getdEscolaresRequest();
         dEscolaresRequest.setChildId(childId);
 
@@ -73,20 +83,22 @@ public class RegistroManager {
             @Override
             public void onResponse(Call<DEscolares> call, Response<DEscolares> response) {
                 if(response.code() == 200){
-                    registrarActividadFavorita(childId);
+                    registrarActividadFavorita(childId, context);
                 } else {
+                    error(context);
                     Log.e("Error log", errorRegisterMessage + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<DEscolares> call, Throwable t) {
+                error(context);
                 Log.e("Error log", errorServerMessage + t.getMessage());
             }
         });
     }
 
-    private void registrarActividadFavorita(Integer childId) {
+    private void registrarActividadFavorita(Integer childId, Context context) {
 
         CreateActividadesFavoritasRequest actividadesFavoritasRequest = registroContext.getActividadesFavoritasRequest();
         actividadesFavoritasRequest.setChildId(childId);
@@ -95,20 +107,22 @@ public class RegistroManager {
             @Override
             public void onResponse(Call<Response<Void>> call, Response<Response<Void>> response) {
                 if(response.code() == 204){
-                    registrarDClinicos(childId);
+                    registrarDClinicos(childId, context);
                 } else {
+                    error(context);
                     Log.e("Error log", errorRegisterMessage + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<Response<Void>> call, Throwable t) {
+                error(context);
                 Log.e("Error log", errorServerMessage + t.getMessage());
             }
         });
     }
 
-    private void registrarDClinicos(Integer childId){
+    private void registrarDClinicos(Integer childId, Context context){
         CreateDClinicosRequest dClinicosRequest = registroContext.getdClinicosRequest();
         dClinicosRequest.setChildId(childId);
 
@@ -116,18 +130,29 @@ public class RegistroManager {
             @Override
             public void onResponse(Call<DClinicos> call, Response<DClinicos> response) {
                 if(response.code() == 200){
+                    Intent menuPrincipalIntent = new Intent(context, MenuPrincipalActivity.class);
+                    context.startActivity(menuPrincipalIntent);
 
                 } else {
+                    error(context);
                     Log.e("Error log", errorRegisterMessage + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<DClinicos> call, Throwable t) {
+                error(context);
                 Log.e("Error log", errorServerMessage + t.getMessage());
             }
         });
 
+    }
+
+    void error(Context context){
+        Toast.makeText(context, "Ha ocurrido un error durante el registro", Toast.LENGTH_SHORT).show();
+
+        Intent startAppIntent = new Intent(context, StartAppActivity.class);
+        context.startActivity(startAppIntent);
     }
 }
 
