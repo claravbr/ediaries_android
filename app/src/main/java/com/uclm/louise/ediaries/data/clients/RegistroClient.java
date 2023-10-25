@@ -8,6 +8,8 @@ import android.util.Log;
 import com.uclm.louise.ediaries.RegistroService;
 import com.uclm.louise.ediaries.data.AuthInterceptor;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -31,7 +33,12 @@ public class RegistroClient {
             });
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-            OkHttpClient okHttpClient = okhttpClient(context);
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .connectTimeout(2, TimeUnit.MINUTES)
+                    .readTimeout(50, TimeUnit.SECONDS)
+                    .writeTimeout(50, TimeUnit.SECONDS)
+                    .addInterceptor(loggingInterceptor)
+                    .build();
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
@@ -43,15 +50,6 @@ public class RegistroClient {
         }
 
         return registroService;
-    }
-
-    /**
-     * Initialize OkhttpClient with our interceptor
-     */
-    private static OkHttpClient okhttpClient(Context context) {
-        return new OkHttpClient.Builder()
-                .addInterceptor(new AuthInterceptor(context))
-                .build();
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -20,6 +21,7 @@ import com.uclm.louise.ediaries.R;
 import com.uclm.louise.ediaries.data.models.RegistroContext;
 import com.uclm.louise.ediaries.data.requests.CreateDClinicosRequest;
 import com.uclm.louise.ediaries.enums.TipoTDAH;
+import com.uclm.louise.ediaries.utils.RegistroManager;
 
 public class FormDclinicosActivity extends AppCompatActivity {
 
@@ -118,11 +120,15 @@ public class FormDclinicosActivity extends AppCompatActivity {
         int selectedButtonId = toggleButton.getCheckedButtonId();
 
         // Comprobar que los datos sean validos
-        if(validFields(materialSwitch, editTextEdadTDAH, editTextMedicacion, editTextTiempoMedicacion, selectedButtonId, textInputLayoutDificultadAprendizaje)){
+        if(validFields(materialSwitch, editTextEdadTDAH, editTextMedicacion, editTextTiempoMedicacion, selectedButtonId)) {
             // Obtener los datos introducidos en el formulario
             String enfermedad = editTextEnfermedad.getText().toString().trim();
             boolean hasTDAH = materialSwitch.isChecked();
-            Integer tdahEdad = Integer.parseInt(editTextEdadTDAH.getText().toString().trim());
+
+            Integer tdahEdad = null;
+            if (!editTextEdadTDAH.getText().toString().isEmpty()) {
+                tdahEdad = Integer.parseInt(editTextEdadTDAH.getText().toString().trim());
+            }
             String medicacionInfo = editTextMedicacion.getText().toString().trim();
             String medicacionAntiguedad = editTextTiempoMedicacion.getText().toString().trim();
             boolean hasIntervencion = materialSwitchIntervencion.isChecked();
@@ -134,7 +140,7 @@ public class FormDclinicosActivity extends AppCompatActivity {
                 tdahTipo = String.valueOf(TipoTDAH.Combinado);
             } else if (selectedButtonId == R.id.buttonHiperactivo) {
                 tdahTipo = String.valueOf(TipoTDAH.Hiperactivo);
-            } else if (selectedButtonId == R.id.buttonInatento){
+            } else if (selectedButtonId == R.id.buttonInatento) {
                 tdahTipo = String.valueOf(TipoTDAH.Inatento);
             }
 
@@ -143,22 +149,25 @@ public class FormDclinicosActivity extends AppCompatActivity {
             // Rellenar contexto
             RegistroContext registroContext = RegistroContext.getInstance();
             registroContext.setdClinicosRequest(dClinicosRequest);
+
+            RegistroManager registroManager = new RegistroManager();
+            registroManager.registrarUsuario(this);
+
+            // REGISTRO COMPLETO REALIZADO CON EXITO
+            Intent intent = new Intent(FormDclinicosActivity.this, MenuPrincipalActivity.class);
+            startActivity(intent);
+            Log.i("Info log", "Pantalla de bienvenida");
+
         }
 
     }
 
-    private boolean validFields(MaterialSwitch materialSwitch, TextInputEditText editTextEdadTDAH, TextInputEditText editTextMedicacion, TextInputEditText editTextTiempoMedicacion, int selectedButtonId, TextInputLayout textInputLayoutDificultadAprendizaje) {
+    private boolean validFields(MaterialSwitch materialSwitch, TextInputEditText editTextEdadTDAH, TextInputEditText editTextMedicacion, TextInputEditText editTextTiempoMedicacion, int selectedButtonId) {
         String messageError = "Este campo no puede estar vacío";
 
         if(materialSwitch.isChecked() && !isChecked(selectedButtonId) && editTextEdadTDAH.getText().toString().isEmpty()){
             editTextEdadTDAH.setError(messageError);
             editTextEdadTDAH.requestFocus();
-            return false;
-        }
-
-        if (textInputLayoutDificultadAprendizaje.getEditText().getText().toString().isEmpty()){
-            textInputLayoutDificultadAprendizaje.setError(messageError);
-            textInputLayoutDificultadAprendizaje.requestFocus();
             return false;
         }
 
