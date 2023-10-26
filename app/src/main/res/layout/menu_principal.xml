@@ -20,9 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/top_app_bar"
-            app:title="¡Hola, $nombre!"
-            app:titleCentered="true"
-            tools:text="¡Hola, Clara!"/>
+            app:titleCentered="true"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

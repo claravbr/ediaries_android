@@ -6,7 +6,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.uclm.louise.ediaries.RegistroService;
-import com.uclm.louise.ediaries.activity.LoadingActivity;
 import com.uclm.louise.ediaries.activity.MenuPrincipalActivity;
 import com.uclm.louise.ediaries.activity.StartAppActivity;
 import com.uclm.louise.ediaries.data.clients.RegistroClient;
@@ -20,9 +19,10 @@ import retrofit2.Response;
 
 public class RegistroManager {
     private RegistroService registroService;
-    private String errorServerMessage = "Error en la llamada al servidor: ";
-    private String errorRegisterMessage = "Error en el registro: ";
-    private RegistroContext registroContext = RegistroContext.getInstance();
+    private SessionManager sessionManager;
+    private final String errorServerMessage = "Error en la llamada al servidor: ";
+    private final String errorRegisterMessage = "Error en el registro: ";
+    private final RegistroContext registroContext = RegistroContext.getInstance();
 
     // Se realiza el registro completo, haciendo las llamadas de cada pantalla
     // Usuario -> Datos personales -> Datos escolares -> Actividades favoritas -> Datos clinicos
@@ -32,11 +32,21 @@ public class RegistroManager {
         registroService = RegistroClient.getRegistroService(context);
         CreateUsuarioRequest usuarioRequest = registroContext.getUsuarioRequest();
 
+        sessionManager = new SessionManager(context);
+
         registroService.createUsuario(usuarioRequest).enqueue(new Callback<CreateUsuarioResult>() {
             @Override
             public void onResponse(Call<CreateUsuarioResult> call, Response<CreateUsuarioResult> response) {
-                if(response.code() == 200){
+
+                if(response.code() == 200 && response != null && response.body().getUsuario() != null){
                     Integer childId = response.body().getChildId();
+
+                    Session session = Session.getInstance();
+                    session.setChildId(childId);
+                    session.setUsuario(response.body().getUsuario());
+
+                    sessionManager.saveAuthToken(response.body().getToken());
+
                     registrarDPersonales(childId, context);
                 } else {
                     error(context);

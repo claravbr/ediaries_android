@@ -11,15 +11,26 @@ import android.view.View;
 import android.widget.Button;
 
 import com.uclm.louise.ediaries.R;
+import com.uclm.louise.ediaries.data.clients.ApiClient;
+import com.uclm.louise.ediaries.data.models.Usuario;
+import com.uclm.louise.ediaries.utils.Session;
+import com.uclm.louise.ediaries.utils.SessionManager;
 
 public class MenuPrincipalActivity extends AppCompatActivity {
+
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
 
+        sessionManager = new SessionManager(this);
+
+        Session session = Session.getInstance();
+
         Toolbar toolbar = findViewById(R.id.topAppBar);
+        toolbar.setTitle("¡Hola " + session.getUsuario().getNombre() + "!");
         setSupportActionBar(toolbar);
 
         Button buttonMisTareas = findViewById(R.id.option1Button);

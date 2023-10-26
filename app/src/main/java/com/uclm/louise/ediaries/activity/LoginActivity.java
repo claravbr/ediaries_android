@@ -2,7 +2,6 @@ package com.uclm.louise.ediaries.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +11,12 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
-import com.uclm.louise.ediaries.ApiService;
 import com.uclm.louise.ediaries.R;
 import com.uclm.louise.ediaries.data.clients.ApiClient;
+import com.uclm.louise.ediaries.data.models.Usuario;
 import com.uclm.louise.ediaries.data.requests.LoginRequest;
 import com.uclm.louise.ediaries.data.responses.LoginResponse;
+import com.uclm.louise.ediaries.utils.Session;
 import com.uclm.louise.ediaries.utils.SessionManager;
 
 import retrofit2.Call;
@@ -93,6 +93,10 @@ public class LoginActivity extends AppCompatActivity {
                     LoginResponse loginResponse = response.body();
 
                     if (loginResponse != null && response.code() == 200 && loginResponse.getUsuario() != null) {
+                        Session session = Session.getInstance();
+                        session.setChildId(loginResponse.getChildId());
+                        session.setUsuario(loginResponse.getUsuario());
+
                         sessionManager.saveAuthToken(loginResponse.getToken());
 
                         Intent intentMenuPrincipal = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
