@@ -11,9 +11,13 @@ public class LoginResponse {
     @SerializedName("usuario")
     private Usuario usuario;
 
-    public LoginResponse(String token, Usuario usuario) {
+    @SerializedName("child_id")
+    private Integer childId;
+
+    public LoginResponse(String token, Usuario usuario, Integer child_id) {
         this.token = token;
         this.usuario = usuario;
+        this.childId = child_id;
     }
 
     public LoginResponse() {
@@ -33,5 +37,13 @@ public class LoginResponse {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Integer getChildId() {
+        return childId;
+    }
+
+    public void setChildId(Integer childId) {
+        this.childId = childId;
     }
 }
