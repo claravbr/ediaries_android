@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.uclm.louise.ediaries.RegistroService;
+import com.uclm.louise.ediaries.ApiService;
 import com.uclm.louise.ediaries.activity.MenuPrincipalActivity;
 import com.uclm.louise.ediaries.activity.StartAppActivity;
-import com.uclm.louise.ediaries.data.clients.RegistroClient;
+import com.uclm.louise.ediaries.data.clients.ApiClient;
 import com.uclm.louise.ediaries.data.models.*;
 import com.uclm.louise.ediaries.data.requests.*;
 import com.uclm.louise.ediaries.data.responses.CreateUsuarioResult;
@@ -18,7 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegistroManager {
-    private RegistroService registroService;
+    private ApiService apiService;
     private SessionManager sessionManager;
     private final String errorServerMessage = "Error en la llamada al servidor: ";
     private final String errorRegisterMessage = "Error en el registro: ";
@@ -29,12 +29,12 @@ public class RegistroManager {
 
     public void registrarUsuario(Context context){
 
-        registroService = RegistroClient.getRegistroService(context);
+        apiService = ApiClient.getApiService(context);
         CreateUsuarioRequest usuarioRequest = registroContext.getUsuarioRequest();
 
         sessionManager = new SessionManager(context);
 
-        registroService.createUsuario(usuarioRequest).enqueue(new Callback<CreateUsuarioResult>() {
+        apiService.createUsuario(usuarioRequest).enqueue(new Callback<CreateUsuarioResult>() {
             @Override
             public void onResponse(Call<CreateUsuarioResult> call, Response<CreateUsuarioResult> response) {
 
@@ -66,7 +66,7 @@ public class RegistroManager {
         CreateDPersonalesRequest dPersonalesRequest = registroContext.getdPersonalesRequest();
         dPersonalesRequest.setChildId(childId);
 
-        registroService.createDPersonales(dPersonalesRequest).enqueue(new Callback<DPersonales>() {
+        apiService.createDPersonales(dPersonalesRequest).enqueue(new Callback<DPersonales>() {
             @Override
             public void onResponse(Call<DPersonales> call, Response<DPersonales> response) {
                 if(response.code() == 200){
@@ -89,7 +89,7 @@ public class RegistroManager {
         CreateDEscolaresRequest dEscolaresRequest = registroContext.getdEscolaresRequest();
         dEscolaresRequest.setChildId(childId);
 
-        registroService.createDEscolares(dEscolaresRequest).enqueue(new Callback<DEscolares>() {
+        apiService.createDEscolares(dEscolaresRequest).enqueue(new Callback<DEscolares>() {
             @Override
             public void onResponse(Call<DEscolares> call, Response<DEscolares> response) {
                 if(response.code() == 200){
@@ -113,7 +113,7 @@ public class RegistroManager {
         CreateActividadesFavoritasRequest actividadesFavoritasRequest = registroContext.getActividadesFavoritasRequest();
         actividadesFavoritasRequest.setChildId(childId);
 
-        registroService.createActividadesFavoritas(actividadesFavoritasRequest).enqueue(new Callback<Response<Void>>() {
+        apiService.createActividadesFavoritas(actividadesFavoritasRequest).enqueue(new Callback<Response<Void>>() {
             @Override
             public void onResponse(Call<Response<Void>> call, Response<Response<Void>> response) {
                 if(response.code() == 204){
@@ -136,7 +136,7 @@ public class RegistroManager {
         CreateDClinicosRequest dClinicosRequest = registroContext.getdClinicosRequest();
         dClinicosRequest.setChildId(childId);
 
-        registroService.createDClinicos(dClinicosRequest).enqueue(new Callback<DClinicos>() {
+        apiService.createDClinicos(dClinicosRequest).enqueue(new Callback<DClinicos>() {
             @Override
             public void onResponse(Call<DClinicos> call, Response<DClinicos> response) {
                 if(response.code() == 200){

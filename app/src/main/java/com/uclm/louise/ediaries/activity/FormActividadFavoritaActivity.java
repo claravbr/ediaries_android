@@ -69,7 +69,6 @@ public class FormActividadFavoritaActivity  extends AppCompatActivity {
                     CreateActividadesFavoritasRequest actividadesFavoritasRequest = new CreateActividadesFavoritasRequest();
                     actividadesFavoritasRequest.setActividadfavoritaIds(actividadesFavoritas);
 
-
                     RegistroContext registroContext = RegistroContext.getInstance();
                     registroContext.setActividadesFavoritasRequest(actividadesFavoritasRequest);
 

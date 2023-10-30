@@ -25,22 +25,4 @@ public class MainActivity extends AppCompatActivity {
         apiClient = new ApiClient();
         sessionManager = new SessionManager(this);
     }
-
-    /**
-     * Function to fetch posts
-     */
-    private void fetchPosts() {
-        apiClient.getApiService(this).fetchPosts()
-                .enqueue(new Callback<PostsResponse>() {
-                    @Override
-                    public void onResponse(Call<PostsResponse> call, Response<PostsResponse> response) {
-                        // Manejar la función para mostrar las publicaciones
-                    }
-
-                    @Override
-                    public void onFailure(Call<PostsResponse> call, Throwable t) {
-                        // Error al obtener las publicaciones
-                    }
-                });
-    }
 }

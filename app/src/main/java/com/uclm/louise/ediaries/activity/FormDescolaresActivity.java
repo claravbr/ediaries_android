@@ -14,15 +14,8 @@ import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.uclm.louise.ediaries.R;
-import com.uclm.louise.ediaries.RegistroService;
-import com.uclm.louise.ediaries.data.clients.RegistroClient;
-import com.uclm.louise.ediaries.data.models.DEscolares;
 import com.uclm.louise.ediaries.data.models.RegistroContext;
 import com.uclm.louise.ediaries.data.requests.CreateDEscolaresRequest;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class FormDescolaresActivity extends AppCompatActivity {
 

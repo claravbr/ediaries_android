@@ -19,8 +19,6 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.uclm.louise.ediaries.R;
-import com.uclm.louise.ediaries.RegistroService;
-import com.uclm.louise.ediaries.data.clients.RegistroClient;
 import com.uclm.louise.ediaries.data.models.RegistroContext;
 import com.uclm.louise.ediaries.data.requests.CreateUsuarioRequest;
 
