@@ -9,7 +9,7 @@ public class SearchTareaDiariaResult {
     private Integer id;
     @SerializedName("child_id")
     private Integer childId;
-    @SerializedName("categoria_id")a
+    @SerializedName("categoria_id")
     private Integer categoriaId;
     @SerializedName("nombre")
     private String nombre;
