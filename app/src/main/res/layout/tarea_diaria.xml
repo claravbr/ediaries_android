@@ -26,6 +26,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!--
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="wrap_content"
@@ -74,7 +75,6 @@
         app:layout_constraintTop_toBottomOf="@+id/frameLayout"
         tools:text="Te quedan 2 días" />
 
-    <!-- Linear progress indicator -->
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/linearProgressIndicator"
         android:layout_width="150dp"
@@ -143,7 +143,7 @@
         app:layout_constraintTop_toBottomOf="@+id/frameLayout2"
         tools:text="¡Te queda 1 día!" />
 
-    <!-- Linear progress indicator -->
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:layout_width="150dp"
         android:layout_height="25dp"
@@ -173,7 +173,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
+        app:layout_constraintTop_toBottomOf="@+id/materialDivider2" /> -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTareas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+
+    <TextView
+        android:id="@+id/textSinTareas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Todavía no tienes ninguna tarea por hacer"
+        android:visibility="gone"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/extended_fab"
