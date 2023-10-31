@@ -1,6 +1,7 @@
 package com.uclm.louise.ediaries.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.uclm.louise.ediaries.R;
 import com.uclm.louise.ediaries.data.models.RegistroContext;
 import com.uclm.louise.ediaries.data.requests.CreateDPersonalesRequest;
 import com.uclm.louise.ediaries.enums.Sexo;
+import com.uclm.louise.ediaries.utils.DatePickerFragment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +25,7 @@ public class FormDpersonalesActivity extends AppCompatActivity {
 
     private MaterialToolbar topAppBar;
     private Button buttonNext;
+    TextInputEditText editFechaNacimiento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +54,21 @@ public class FormDpersonalesActivity extends AppCompatActivity {
             }
         });
 
+        // LISTENER QUE MUESTRA UN CALENDARIO
+        editFechaNacimiento = findViewById(R.id.editFechanacimiento);
+        editFechaNacimiento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment newFragment = new DatePickerFragment(editFechaNacimiento);
+                newFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
+
     }
 
     private void nextStep() {
 
-        TextInputEditText editFechaNacimiento = findViewById(R.id.editFechanacimiento);
+        editFechaNacimiento = findViewById(R.id.editFechanacimiento);
         TextInputEditText editTextWeight = findViewById(R.id.editTextWeight);
         TextInputEditText editTextHeight = findViewById(R.id.editTextHeight);
         MaterialButtonToggleGroup toggleButton = findViewById(R.id.toggleButton);
@@ -65,7 +78,7 @@ public class FormDpersonalesActivity extends AppCompatActivity {
         int selectedButtonId = toggleButton.getCheckedButtonId();
 
         // Comprobar si se ha quedado algun campo obligatorio sin rellenar y que el formato de la fecha de nacimiento sea el pedido
-        if(validFields(editFechaNacimiento, editTextHeight, editTextWeight) && validDate(fechaNacimiento) && isChecked(selectedButtonId)){
+        if(validFields(editFechaNacimiento, editTextHeight, editTextWeight) && isChecked(selectedButtonId)){
 
             // Obtener los datos introducidos en el formulario
             Float peso = Float.parseFloat(editTextWeight.getText().toString());
@@ -101,18 +114,6 @@ public class FormDpersonalesActivity extends AppCompatActivity {
             }
         }
         return true;
-    }
-
-    private boolean validDate(String date) {
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        df.setLenient(false);
-
-        try {
-            df.parse(date);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
     }
 
     private boolean isChecked(int selectedButtonId){
