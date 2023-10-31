@@ -156,9 +156,7 @@ public class FormDclinicosActivity extends AppCompatActivity {
             RegistroManager registroManager = new RegistroManager();
             registroManager.registrarUsuario(this);
 
-
         }
-
     }
 
     private boolean validFields(MaterialSwitch materialSwitch, TextInputEditText editTextEdadTDAH, TextInputEditText editTextMedicacion, TextInputEditText editTextTiempoMedicacion, int selectedButtonId) {

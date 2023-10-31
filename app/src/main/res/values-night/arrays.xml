@@ -16,4 +16,38 @@
         <item>1º Bachillerato</item>
         <item>2º Bachillerato</item>
     </string-array>
+
+    <string-array name="dificultad_aprendizaje">
+        <item>Dislexia</item>
+        <item>Discalculia</item>
+        <item>Disgrafia</item>
+        <item>Transtorno de Coordinación del Movimiento</item>
+    </string-array>
+
+    <string-array name="actividades_favoritas">
+        <item>Jugar al fútbol,1</item>
+        <item>Pintar y dibujar,2</item>
+        <item>Bailar,3</item>
+        <item>Leer libros,4</item>
+        <item>Jugar videojuegos,5</item>
+        <item>Hacer manualidades,6</item>
+        <item>Montar en bicicleta,7</item>
+        <item>Cantar,8</item>
+        <item>Ver películas,9</item>
+        <item>Hacer deportes acuáticos,10</item>
+    </string-array>
+
+    <string-array name="categoria_tarea">
+        <item> Deberes</item>
+        <item> Casa</item>
+        <item> Amigos</item>
+        <item> Extraescolares</item>
+        <item> Deportes</item>
+    </string-array>
+
+    <string-array name="prioridad_tarea">
+        <item> Alta</item>
+        <item> Media</item>
+        <item> Baja</item>
+    </string-array>
 </resources>

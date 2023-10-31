@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Ediaries"
         tools:targetApi="31">
         <activity
+            android:name=".activity.NuevaTareaDiariaActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.LoadingActivity"
             android:exported="false" />
         <activity

@@ -26,13 +26,16 @@
     <string name="si">Si</string>
     <string name="tienes_tdah">¿Tienes TDAH?</string>
     <string name="indica_si_tienes_alguna_enfermedad">Indica si tienes alguna enfermedad</string>
-    <string name="indica_si_recibes_alg_n_tipo_de_intervenci_n_psicol_gica_o_pedag_gica">Indica si recibes algún tipo de intervención psicológica o pedagógica</string>
-    <string name="en_caso_afirmativo_desde_cuando_la_tomas">En caso afirmativo, ¿Desde cuando la tomas?</string>
+    <string name="indica_si_recibes_alg_n_tipo_de_intervenci_n_psicol_gica_o_pedag_gica">Indica si recibes intervención psicológica o pedagógica</string>
+    <string name="en_caso_afirmativo_desde_cuando_la_tomas">¿Desde cuando la tomas?</string>
     <string name="indica_si_tienes_alguna_dificultad_en_el_aprendizaje">Indica si tienes alguna dificultad en el aprendizaje</string>
     <string name="dificultad_en_el_aprendizaje">Dificultad en el aprendizaje</string>
     <string name="indica_si_tomas_alguna_medicaci_n">Indica si tomas alguna medicación</string>
-    <string name="en_caso_afirmativo_a_qu_edad_te_diagnosticaron_tdah">En caso afirmativo, ¿A qué edad te diagnosticaron TDAH?</string>
-    <string name="en_caso_afirmativo_indica_el_tipo">En caso afirmativo, indica el tipo</string>
+    <string name="en_caso_afirmativo_a_qu_edad_te_diagnosticaron_tdah">¿A qué edad te diagnosticaron TDAH?</string>
+    <string name="en_caso_afirmativo_indica_el_tipo">Indica el tipo de TDAH</string>
+    <string name="next">siguiente</string>
+    <string name="content_description_next">flecha botón para avanzar en el formulario</string>
+    <string name="a_adir">Añadir</string>
     <string name="mis_tareas">Mis tareas</string>
     <string name="mi_progreso">Mi progreso</string>
     <string name="consejos_y_ayuda">Consejos y ayuda</string>
@@ -53,5 +56,5 @@
     <string name="boton_para_a_adir_una_nueva_tarea">Boton para añadir una nueva tarea</string>
     <string name="categoria">Categoria</string>
     <string name="ver_en_el_calendario">Ver en el calendario</string>
-    <string name="fecha_de_nacimiento">Fecha de nacimiento (dd/mm/yyyy)</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
 </resources>

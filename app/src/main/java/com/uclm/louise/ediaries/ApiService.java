@@ -6,7 +6,7 @@ import static com.uclm.louise.ediaries.utils.Constantes.DESCOLARES_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.DPERSONALES_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.GET_TAREAS;
 import static com.uclm.louise.ediaries.utils.Constantes.LOGIN_URL;
-import static com.uclm.louise.ediaries.utils.Constantes.POSTS_URL;
+import static com.uclm.louise.ediaries.utils.Constantes.NEW;
 import static com.uclm.louise.ediaries.utils.Constantes.REGISTER_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.TAREA_DIARIA_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.USUARIO_URL;
@@ -14,15 +14,16 @@ import static com.uclm.louise.ediaries.utils.Constantes.USUARIO_URL;
 import com.uclm.louise.ediaries.data.models.DClinicos;
 import com.uclm.louise.ediaries.data.models.DEscolares;
 import com.uclm.louise.ediaries.data.models.DPersonales;
+import com.uclm.louise.ediaries.data.models.TareaDiaria;
 import com.uclm.louise.ediaries.data.requests.CreateActividadesFavoritasRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDClinicosRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDEscolaresRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDPersonalesRequest;
+import com.uclm.louise.ediaries.data.requests.CreateTareaDiariaRequest;
 import com.uclm.louise.ediaries.data.requests.CreateUsuarioRequest;
 import com.uclm.louise.ediaries.data.requests.LoginRequest;
 import com.uclm.louise.ediaries.data.responses.CreateUsuarioResult;
 import com.uclm.louise.ediaries.data.responses.LoginResponse;
-import com.uclm.louise.ediaries.data.responses.PostsResponse;
 import com.uclm.louise.ediaries.data.responses.SearchTareaDiariaResult;
 
 import java.util.List;
@@ -30,7 +31,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -58,4 +58,7 @@ public interface ApiService {
 
     @GET(TAREA_DIARIA_URL+GET_TAREAS+"{childId}")
     Call<List<SearchTareaDiariaResult>> fetchTareasDiarias(@Header ("Authorization") String token, @Path("childId") Integer childId);
+
+    @POST(TAREA_DIARIA_URL+NEW)
+    Call<TareaDiaria> createTareaDiaria(@Header ("Authorization") String token, @Body CreateTareaDiariaRequest tareaDiaria);
 }

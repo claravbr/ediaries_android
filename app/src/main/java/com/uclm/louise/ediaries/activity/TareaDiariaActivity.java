@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.uclm.louise.ediaries.ApiService;
 import com.uclm.louise.ediaries.R;
 import com.uclm.louise.ediaries.data.clients.ApiClient;
@@ -32,16 +33,15 @@ import retrofit2.Response;
 public class TareaDiariaActivity extends AppCompatActivity {
 
     MaterialToolbar topAppBar;
-    Button buttonCalendar;
+    private Button buttonNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tarea_diaria);
 
+        // Cargar las tareas pendientes del usuario, si tiene
         getTareasChild();
-
-        //buttonCalendar = findViewById(R.id.buttonCalendar);
 
         // <-- VOLVER AL MENU PRINCIPAL -->
         setSupportActionBar(topAppBar);
@@ -55,6 +55,13 @@ public class TareaDiariaActivity extends AppCompatActivity {
             }
         });
 
+        // NUEVA TAREA
+        ExtendedFloatingActionButton fab = findViewById(R.id.extended_fab);
+
+        fab.setOnClickListener(view -> {
+            Intent intent = new Intent(TareaDiariaActivity.this, NuevaTareaDiariaActivity.class);
+            startActivity(intent);
+        });
 
     }
 

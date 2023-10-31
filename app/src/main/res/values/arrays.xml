@@ -36,4 +36,18 @@
         <item>Ver películas,9</item>
         <item>Hacer deportes acuáticos,10</item>
     </string-array>
+
+    <string-array name="categoria_tarea">
+        <item> Deberes</item>
+        <item> Casa</item>
+        <item> Amigos</item>
+        <item> Extraescolares</item>
+        <item> Deportes</item>
+    </string-array>
+
+    <string-array name="prioridad_tarea">
+        <item> Alta</item>
+        <item> Media</item>
+        <item> Baja</item>
+    </string-array>
 </resources>
