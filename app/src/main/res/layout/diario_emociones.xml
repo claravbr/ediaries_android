@@ -36,37 +36,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
 
-    <Button
-        android:id="@+id/buttonAngry"
+    <FrameLayout
+        android:id="@+id/frameLayoutEnfadado"
         android:layout_width="140dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         android:clickable="true"
-        android:drawableTop="@drawable/ic_angry"
         android:focusable="true"
         android:text="@string/enfadado"
-        app:backgroundTint="#E53935"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/buttonSad"
+        app:layout_constraintEnd_toStartOf="@id/frameLayoutTriste"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewDate" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDate">
 
-    <Button
-        android:id="@+id/buttonSad"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_angry" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayoutTriste"
         android:layout_width="140dp"
+        android:layout_height="0dp"
         android:clickable="true"
         android:focusable="true"
-        android:layout_height="0dp"
-        android:drawableTop="@drawable/ic_sad"
         android:text="@string/triste"
-        app:backgroundTint="#00ACC1"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/buttonAngry"
-        app:layout_constraintTop_toTopOf="@id/buttonAngry" />
+        app:layout_constraintStart_toEndOf="@id/frameLayoutEnfadado"
+        app:layout_constraintTop_toTopOf="@id/frameLayoutEnfadado">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_sad" />
+    </FrameLayout>
 
     <TextView
-        android:id="@+id/emocion1Text"
+        android:id="@+id/enfadadoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -74,10 +83,10 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAngry" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayoutEnfadado" />
 
     <TextView
-        android:id="@+id/emocion2Text"
+        android:id="@+id/tristeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/triste"
@@ -85,40 +94,49 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toEndOf="@+id/emocion1Text"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSad" />
+        app:layout_constraintStart_toEndOf="@+id/enfadadoText"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayoutTriste" />
 
-    <Button
-        android:id="@+id/buttonTired"
+    <FrameLayout
+        android:id="@+id/frameLayoutCansado"
         android:layout_width="140dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         android:clickable="true"
-        android:drawableTop="@drawable/ic_tired"
         android:focusable="true"
         android:text="@string/cansado"
-        app:backgroundTint="#F4511E"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/buttonHappy"
+        app:layout_constraintEnd_toStartOf="@id/frameLayoutContento"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emocion1Text" />
+        app:layout_constraintTop_toBottomOf="@+id/enfadadoText" >
 
-    <Button
-        android:id="@+id/buttonHappy"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_tired" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayoutContento"
         android:layout_width="140dp"
         android:layout_height="0dp"
         android:clickable="true"
-        android:drawableTop="@drawable/ic_happy"
         android:focusable="true"
         android:text="@string/contento"
-        app:backgroundTint="#7CB342"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/buttonTired"
-        app:layout_constraintTop_toTopOf="@+id/buttonTired" />
+        app:layout_constraintStart_toEndOf="@id/frameLayoutCansado"
+        app:layout_constraintTop_toTopOf="@+id/frameLayoutCansado" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_happy" />
+    </FrameLayout>
 
     <TextView
-        android:id="@+id/emocion3Text"
+        android:id="@+id/cansadoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -126,10 +144,10 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonTired" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayoutCansado" />
 
     <TextView
-        android:id="@+id/emocion4Text"
+        android:id="@+id/contentoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/contento"
@@ -137,26 +155,30 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.62"
-        app:layout_constraintStart_toEndOf="@+id/emocion3Text"
-        app:layout_constraintTop_toBottomOf="@+id/buttonTired" />
+        app:layout_constraintStart_toEndOf="@+id/cansadoText"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayoutCansado" />
 
-    <Button
-        android:id="@+id/buttonExcited"
+    <FrameLayout
+        android:id="@+id/frameLayoutEmocionado"
         android:layout_width="140dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:drawableTop="@drawable/ic_excited"
-        android:text="@string/emocionado"
-        app:backgroundTint="#FFEB3B"
         android:clickable="true"
         android:focusable="true"
+        android:text="@string/emocionado"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emocion3Text" />
+        app:layout_constraintTop_toBottomOf="@+id/cansadoText" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_excited" />
+    </FrameLayout>
 
     <TextView
-        android:id="@+id/emocion5Text"
+        android:id="@+id/emocionadoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/emocionado"
@@ -164,22 +186,21 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonExcited" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayoutEmocionado" />
 
     <TextView
         android:id="@+id/textViewReason"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="@string/porque"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonExcited" />
+        app:layout_constraintTop_toBottomOf="@+id/emocionadoText" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextFieldReason"
+        android:id="@+id/outlinedTextFieldMotivo"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -190,9 +211,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewReason">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextUsername"
+            android:id="@+id/editTextMotivo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textLongMessage"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -204,6 +226,6 @@
         android:text="@string/guardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldReason" />
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldMotivo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

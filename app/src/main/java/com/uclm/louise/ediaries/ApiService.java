@@ -3,6 +3,7 @@ package com.uclm.louise.ediaries;
 import static com.uclm.louise.ediaries.utils.Constantes.ACTIVIDADES_FAVORITAS_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.DCLINICOS_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.DESCOLARES_URL;
+import static com.uclm.louise.ediaries.utils.Constantes.DIARIO_EMOCIONES_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.DPERSONALES_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.GET_TAREAS;
 import static com.uclm.louise.ediaries.utils.Constantes.LOGIN_URL;
@@ -14,11 +15,13 @@ import static com.uclm.louise.ediaries.utils.Constantes.USUARIO_URL;
 import com.uclm.louise.ediaries.data.models.DClinicos;
 import com.uclm.louise.ediaries.data.models.DEscolares;
 import com.uclm.louise.ediaries.data.models.DPersonales;
+import com.uclm.louise.ediaries.data.models.DiarioEmociones;
 import com.uclm.louise.ediaries.data.models.TareaDiaria;
 import com.uclm.louise.ediaries.data.requests.CreateActividadesFavoritasRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDClinicosRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDEscolaresRequest;
 import com.uclm.louise.ediaries.data.requests.CreateDPersonalesRequest;
+import com.uclm.louise.ediaries.data.requests.CreateDiarioEmocionesRequest;
 import com.uclm.louise.ediaries.data.requests.CreateTareaDiariaRequest;
 import com.uclm.louise.ediaries.data.requests.CreateUsuarioRequest;
 import com.uclm.louise.ediaries.data.requests.LoginRequest;
@@ -61,4 +64,7 @@ public interface ApiService {
 
     @POST(TAREA_DIARIA_URL+NEW)
     Call<TareaDiaria> createTareaDiaria(@Header ("Authorization") String token, @Body CreateTareaDiariaRequest tareaDiaria);
+
+    @POST(DIARIO_EMOCIONES_URL+NEW)
+    Call<DiarioEmociones> createDiarioEmociones(@Header ("Authorization") String token, @Body CreateDiarioEmocionesRequest diarioEmociones);
 }
