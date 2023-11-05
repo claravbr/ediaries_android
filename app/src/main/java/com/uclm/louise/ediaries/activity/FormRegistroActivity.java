@@ -88,7 +88,7 @@ public class FormRegistroActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FormRegistroActivity.this, StartAppActivity.class);
+                Intent intent = new Intent(FormRegistroActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

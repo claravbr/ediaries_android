@@ -6,8 +6,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.uclm.louise.ediaries.ApiService;
+import com.uclm.louise.ediaries.activity.MainActivity;
 import com.uclm.louise.ediaries.activity.MenuPrincipalActivity;
-import com.uclm.louise.ediaries.activity.StartAppActivity;
 import com.uclm.louise.ediaries.data.clients.ApiClient;
 import com.uclm.louise.ediaries.data.models.*;
 import com.uclm.louise.ediaries.data.requests.*;
@@ -161,7 +161,7 @@ public class RegistroManager {
     void error(Context context){
         Toast.makeText(context, "Ha ocurrido un error durante el registro", Toast.LENGTH_SHORT).show();
 
-        Intent startAppIntent = new Intent(context, StartAppActivity.class);
+        Intent startAppIntent = new Intent(context, MainActivity.class);
         context.startActivity(startAppIntent);
     }
 }

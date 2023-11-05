@@ -22,16 +22,10 @@
             android:name=".activity.LoadingActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.FormDescolaresActivity"
             android:exported="false" />
         <activity
             android:name=".activity.FormDpersonalesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".activity.TareaDiariaActivity"
@@ -58,7 +52,7 @@
             android:name=".activity.FormDclinicosActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.StartAppActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
