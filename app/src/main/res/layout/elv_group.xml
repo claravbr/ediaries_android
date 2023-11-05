@@ -11,10 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/Azul"
+        android:lineSpacingExtra="16sp"
         android:padding="10dp"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

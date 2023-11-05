@@ -10,6 +10,7 @@ import android.widget.ExpandableListView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.uclm.louise.ediaries.R;
+import com.uclm.louise.ediaries.utils.ExpLVAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,6 +62,8 @@ public class ConsejosActivity extends AppCompatActivity {
         mapChild.put(listPregunta.get(1), "Utiliza técnicas de estudio que te ayuden a retener información, como resumir o hacer esquemas.");
         mapChild.put(listPregunta.get(2), "Aprende técnicas de respiración profunda y relajación muscular para reducir el estrés y la ansiedad.");
         mapChild.put(listPregunta.get(3), "Divide el problema en pasos más pequeños y abórdalos de forma secuencial.");
+        mapChild.put(listPregunta.get(4), "Establece una rutina diaria y usa listas de tareas para asegurar que no se te olvide nada importante");
+        mapChild.put(listPregunta.get(5), "Planifica tus actividades diarias, establece prioridades y utiliza temporizadores para mantenerte enfocado en cada tarea.");
 
         adapter = new ExpLVAdapter(listPregunta, mapChild, this);
         listaconsejos.setAdapter((adapter));

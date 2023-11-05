@@ -1,4 +1,4 @@
-package com.uclm.louise.ediaries.activity;
+package com.uclm.louise.ediaries.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
