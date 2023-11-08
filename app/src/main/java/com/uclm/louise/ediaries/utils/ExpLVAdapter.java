@@ -10,15 +10,16 @@ import android.widget.TextView;
 import com.uclm.louise.ediaries.R;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class ExpLVAdapter extends BaseExpandableListAdapter {
 
     private ArrayList<String> listPregunta;
-    private Map<String, String> mapChild;
+    private Map<String, List<String>> mapChild;
     private Context context;
 
-    public ExpLVAdapter(ArrayList<String> listPregunta, Map<String, String> mapChild, Context context) {
+    public ExpLVAdapter(ArrayList<String> listPregunta, Map<String, List<String>> mapChild, Context context) {
         this.listPregunta = listPregunta;
         this.mapChild = mapChild;
         this.context = context;
@@ -31,7 +32,9 @@ public class ExpLVAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return 1;
+        String pregunta = listPregunta.get(groupPosition);
+        List<String> childList = mapChild.get(pregunta);
+        return childList != null ? childList.size() : 0;
     }
 
     @Override
@@ -42,30 +45,33 @@ public class ExpLVAdapter extends BaseExpandableListAdapter {
     @Override
     public Object getChild(int groupPosition, int childPosition) {
         String pregunta = listPregunta.get(groupPosition);
-        return mapChild.get(pregunta);
+        List<String> childList = mapChild.get(pregunta);
+        if (childList != null && childPosition < childList.size()) {
+            return childList.get(childPosition);
+        }
+        return null;
     }
 
     @Override
     public long getGroupId(int groupPosition) {
-        return 0;
+        return groupPosition;
     }
 
     @Override
     public long getChildId(int groupPosition, int childPosition) {
-        return 0;
+        return childPosition;
     }
 
     @Override
     public boolean hasStableIds() {
-        return false;
+        return true; // Puedes establecerlo en true si los ID son estables
     }
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-
         String tituloPregunta = (String) getGroup(groupPosition);
         convertView = LayoutInflater.from(context).inflate(R.layout.elv_group, null);
-        TextView lvGroup = (TextView) convertView.findViewById(R.id.lvGroup);
+        TextView lvGroup = convertView.findViewById(R.id.lvGroup);
         lvGroup.setText(tituloPregunta);
 
         return convertView;
@@ -75,14 +81,14 @@ public class ExpLVAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         String item = (String) getChild(groupPosition, childPosition);
         convertView = LayoutInflater.from(context).inflate(R.layout.elv_child, null);
-        TextView lvChild = (TextView) convertView.findViewById(R.id.lvChild);
+        TextView lvChild = convertView.findViewById(R.id.lvChild);
         lvChild.setText(item);
 
         return convertView;
     }
 
     @Override
-    public boolean isChildSelectable(int i, int i1) {
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
 }
