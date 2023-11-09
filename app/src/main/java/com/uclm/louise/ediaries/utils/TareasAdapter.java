@@ -1,9 +1,13 @@
 package com.uclm.louise.ediaries.utils;
 
+import static com.uclm.louise.ediaries.enums.ActivityActions.Completar;
+import static com.uclm.louise.ediaries.enums.ActivityActions.Editar;
+
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.divider.MaterialDivider;
 import com.uclm.louise.ediaries.R;
 import com.uclm.louise.ediaries.data.responses.SearchTareaDiariaResult;
+import com.uclm.louise.ediaries.enums.ActivityActions;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +24,16 @@ import java.util.List;
 
 public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewHolder> {
 
-    private List<SearchTareaDiariaResult> listaTareas;
+    public List<SearchTareaDiariaResult> listaTareas;
+    private OnListItemClick onListItemClick;
+
+    public List<SearchTareaDiariaResult> getListaTareas() {
+        return listaTareas;
+    }
+
+    public void setListaTareas(List<SearchTareaDiariaResult> listaTareas) {
+        this.listaTareas = listaTareas;
+    }
 
     public TareasAdapter(List<SearchTareaDiariaResult> listaTareas) {
         this.listaTareas = listaTareas;
@@ -29,6 +43,7 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
     @Override
     public TareaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tarea, parent, false);
+
         return new TareaViewHolder(itemView);
     }
 
@@ -38,6 +53,8 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
 
         holder.nombreTarea.setText(tarea.getNombre());
         holder.categoria.setText(tarea.getCategoria().getNombre());
+
+        holder.idTarea = tarea.getId();
 
         // Ver los días restantes hasta la fecha límite y customizar el recordatorio en función a esos días
         // 0 - 1 días -> Texto rojo
@@ -66,11 +83,20 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
         return listaTareas.size();
     }
 
+    public void setClickListener(OnListItemClick context) {
+        this.onListItemClick = context;
+    }
+
     public class TareaViewHolder extends RecyclerView.ViewHolder {
         public TextView nombreTarea;
         public TextView fechaLimite;
         public TextView categoria;
         public MaterialDivider separator;
+        public ImageView doneImage;
+        public ImageView editImage;
+
+        public Integer idTarea;
+
 
         public TareaViewHolder(View itemView) {
             super(itemView);
@@ -78,6 +104,23 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
             fechaLimite = itemView.findViewById(R.id.textViewTaskTimeLeft);
             categoria = itemView.findViewById(R.id.textViewCategory);
             separator = itemView.findViewById(R.id.materialDivider);
+
+            doneImage = itemView.findViewById(R.id.imageViewDone);
+            editImage = itemView.findViewById(R.id.imageViewEdit);
+
+            doneImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onListItemClick.onClick(view, getAdapterPosition(), idTarea, Completar); // passing click to interface
+                }
+            });
+
+            editImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onListItemClick.onClick(view, getAdapterPosition(), idTarea, Editar); // passing click to interface
+                }
+            });
         }
     }
 }

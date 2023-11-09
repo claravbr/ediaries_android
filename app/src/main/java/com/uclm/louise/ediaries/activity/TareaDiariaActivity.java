@@ -8,8 +8,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -18,6 +21,8 @@ import com.uclm.louise.ediaries.ApiService;
 import com.uclm.louise.ediaries.R;
 import com.uclm.louise.ediaries.data.clients.ApiClient;
 import com.uclm.louise.ediaries.data.responses.SearchTareaDiariaResult;
+import com.uclm.louise.ediaries.enums.ActivityActions;
+import com.uclm.louise.ediaries.utils.OnListItemClick;
 import com.uclm.louise.ediaries.utils.Session;
 import com.uclm.louise.ediaries.utils.SessionManager;
 import com.uclm.louise.ediaries.utils.TareaComparator;
@@ -91,7 +96,20 @@ public class TareaDiariaActivity extends AppCompatActivity {
                         Collections.sort(response.body(), new TareaComparator());
 
                         TareasAdapter adapter = new TareasAdapter(response.body());
-                        recyclerView.setLayoutManager(new LinearLayoutManager(TareaDiariaActivity.this));
+                        LinearLayoutManager linearLayout = new LinearLayoutManager(TareaDiariaActivity.this);
+
+                        OnListItemClick onListItemClick = new OnListItemClick() {
+                            @Override
+                            public void onClick(View view, int position, int idTarea, ActivityActions action) {
+
+                                Log.i("info", "holaaa " + position + " " + idTarea + " " + action);
+
+                            }
+                        };
+
+                        adapter.setClickListener(onListItemClick);
+
+                        recyclerView.setLayoutManager(linearLayout);
                         recyclerView.setAdapter(adapter);
 
                         recyclerView.setVisibility(View.VISIBLE);
