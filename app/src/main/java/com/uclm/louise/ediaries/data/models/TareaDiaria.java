@@ -18,6 +18,8 @@ public class TareaDiaria {
     private String prioridad;
     @SerializedName("duracion")
     private Integer duracion;
+    @SerializedName("terminada")
+    private Boolean terminada;
     @SerializedName("updated_at")
     private String updatedAt;
     @SerializedName("created_at")
@@ -32,21 +34,7 @@ public class TareaDiaria {
     public TareaDiaria() {
     }
 
-    /**
-     *
-     * @param createdAt
-     * @param fechaIntroduccion
-     * @param fechaLimite
-     * @param duracion
-     * @param id
-     * @param childId
-     * @param nombre
-     * @param prioridad
-     * @param categoriaId
-     * @param updatedAt
-     */
-    public TareaDiaria(Integer childId, Integer categoriaId, String nombre, String fechaIntroduccion, String fechaLimite, String prioridad, Integer duracion, String updatedAt, String createdAt, Integer id) {
-        super();
+    public TareaDiaria(Integer childId, Integer categoriaId, String nombre, String fechaIntroduccion, String fechaLimite, String prioridad, Integer duracion, Boolean terminada, String updatedAt, String createdAt, Integer id) {
         this.childId = childId;
         this.categoriaId = categoriaId;
         this.nombre = nombre;
@@ -54,9 +42,18 @@ public class TareaDiaria {
         this.fechaLimite = fechaLimite;
         this.prioridad = prioridad;
         this.duracion = duracion;
+        this.terminada = terminada;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
         this.id = id;
+    }
+
+    public Boolean getTerminada() {
+        return terminada;
+    }
+
+    public void setTerminada(Boolean terminada) {
+        this.terminada = terminada;
     }
 
     public Integer getChildId() {
