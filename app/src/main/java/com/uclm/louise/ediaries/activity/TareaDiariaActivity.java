@@ -1,19 +1,18 @@
 package com.uclm.louise.ediaries.activity;
 
+import static com.uclm.louise.ediaries.enums.ActivityActions.Completar;
+import static com.uclm.louise.ediaries.enums.ActivityActions.Editar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -39,7 +38,9 @@ import retrofit2.Response;
 public class TareaDiariaActivity extends AppCompatActivity {
 
     MaterialToolbar topAppBar;
-    private Button buttonNext;
+
+    private final String errorServerMessage = "Error en la llamada al servidor: ";
+    private final String errorRegisterMessage = "Error en el registro: ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,9 +110,18 @@ public class TareaDiariaActivity extends AppCompatActivity {
 
                         OnListItemClick onListItemClick = new OnListItemClick() {
                             @Override
-                            public void onClick(View view, int position, int idTarea, ActivityActions action) {
+                            public void onClick(View view, int position, SearchTareaDiariaResult tarea, ActivityActions action) {
 
-                                Log.i("info", "holaaa " + position + " " + idTarea + " " + action);
+                                Log.i("Info log", "Acción " + action + " seleccionada para la tarea: " + tarea.getNombre());
+
+                                if(action == Completar){
+
+                                    setTareaAsDone(tarea.getId());
+                                    Intent intentLoading = new Intent(TareaDiariaActivity.this, LoadingActivity.class);
+                                    startActivity(intentLoading);
+                                } else if (action == Editar){
+
+                                }
 
                             }
                         };
@@ -137,7 +147,40 @@ public class TareaDiariaActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void setTareaAsDone(int idTarea) {
+        SessionManager sessionManager = new SessionManager(this);
+
+        ApiService service = ApiClient.getApiService(this);
+
+        service.setTareaDiariaTerminada("Bearer " + sessionManager.fetchAuthToken(), idTarea).enqueue(new Callback<Response<Void>>() {
+            @Override
+            public void onResponse(Call<Response<Void>> call, Response<Response<Void>> response) {
+                if(response.isSuccessful()){
+                    //Refresh la pagina
+                    Intent intent = new Intent(TareaDiariaActivity.this, TareaDiariaActivity.class);
+                    startActivity(intent);
+                } else {
+                    error();
+                    Log.e("Error log", errorRegisterMessage + response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Response<Void>> call, Throwable t) {
+                error();
+                Log.e("Error log", errorServerMessage + t.getMessage());
+            }
+        });
+    }
+
+    private void error(){
+        Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+
+        Intent startAppIntent = new Intent(this, TareaDiariaActivity.class);
+        startActivity(startAppIntent);
     }
 }
 

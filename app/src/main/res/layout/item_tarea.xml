@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Nombre de la tarea"
         android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewDone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

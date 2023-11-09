@@ -21,6 +21,7 @@ public class Constantes {
     public static final String NEW = "new";
     public static final String UPDATE = "update";
     public static final String GET_CHILD = "get-child/";
+    public static final String DONE = "done";
     public static final String GET_TAREAS = "get-tareas/";
 
 

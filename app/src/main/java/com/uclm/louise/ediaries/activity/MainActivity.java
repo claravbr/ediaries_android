@@ -164,5 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
     void error(){
         Toast.makeText(this, "Ha ocurrido un error durante el login", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

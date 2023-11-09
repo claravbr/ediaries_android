@@ -4,6 +4,7 @@ import static com.uclm.louise.ediaries.utils.Constantes.ACTIVIDADES_FAVORITAS_UR
 import static com.uclm.louise.ediaries.utils.Constantes.DCLINICOS_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.DESCOLARES_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.DIARIO_EMOCIONES_URL;
+import static com.uclm.louise.ediaries.utils.Constantes.DONE;
 import static com.uclm.louise.ediaries.utils.Constantes.DPERSONALES_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.GET_TAREAS;
 import static com.uclm.louise.ediaries.utils.Constantes.LOGIN_URL;
@@ -37,6 +38,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiService {
@@ -59,11 +61,14 @@ public interface ApiService {
     @POST(USUARIO_URL+ACTIVIDADES_FAVORITAS_URL)
     Call<Response<Void>> createActividadesFavoritas(@Body CreateActividadesFavoritasRequest actividadesFavoritas);
 
+
     @GET(TAREA_DIARIA_URL+GET_TAREAS+"{childId}")
     Call<List<SearchTareaDiariaResult>> fetchTareasDiarias(@Header ("Authorization") String token, @Path("childId") Integer childId);
 
     @POST(TAREA_DIARIA_URL+NEW)
     Call<TareaDiaria> createTareaDiaria(@Header ("Authorization") String token, @Body CreateTareaDiariaRequest tareaDiaria);
+    @PUT(TAREA_DIARIA_URL+"{tareaId}"+"/"+DONE)
+    Call<Response<Void>> setTareaDiariaTerminada(@Header ("Authorization") String token, @Path("tareaId") Integer tareaId);
 
     @POST(DIARIO_EMOCIONES_URL+NEW)
     Call<DiarioEmociones> createDiarioEmociones(@Header ("Authorization") String token, @Body CreateDiarioEmocionesRequest diarioEmociones);

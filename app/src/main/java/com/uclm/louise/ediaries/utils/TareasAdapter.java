@@ -54,7 +54,7 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
         holder.nombreTarea.setText(tarea.getNombre());
         holder.categoria.setText(tarea.getCategoria().getNombre());
 
-        holder.idTarea = tarea.getId();
+        holder.tarea = tarea;
 
         // Ver los días restantes hasta la fecha límite y customizar el recordatorio en función a esos días
         // 0 - 1 días -> Texto rojo
@@ -95,7 +95,7 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
         public ImageView doneImage;
         public ImageView editImage;
 
-        public Integer idTarea;
+        public SearchTareaDiariaResult tarea;
 
 
         public TareaViewHolder(View itemView) {
@@ -111,14 +111,14 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
             doneImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onListItemClick.onClick(view, getAdapterPosition(), idTarea, Completar); // passing click to interface
+                    onListItemClick.onClick(view, getAdapterPosition(), tarea, Completar); // passing click to interface
                 }
             });
 
             editImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onListItemClick.onClick(view, getAdapterPosition(), idTarea, Editar); // passing click to interface
+                    onListItemClick.onClick(view, getAdapterPosition(), tarea, Editar); // passing click to interface
                 }
             });
         }
