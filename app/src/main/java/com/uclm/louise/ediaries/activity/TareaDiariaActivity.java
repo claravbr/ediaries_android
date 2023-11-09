@@ -28,6 +28,7 @@ import com.uclm.louise.ediaries.utils.SessionManager;
 import com.uclm.louise.ediaries.utils.TareaComparator;
 import com.uclm.louise.ediaries.utils.TareasAdapter;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -92,10 +93,18 @@ public class TareaDiariaActivity extends AppCompatActivity {
 
                     if(!response.body().isEmpty()){
 
-                        // Se ordena la lista para enseñar las tareas de mayor prioridad arriba
-                        Collections.sort(response.body(), new TareaComparator());
+                        List<SearchTareaDiariaResult> tareasTerminadas = new ArrayList<>();
 
-                        TareasAdapter adapter = new TareasAdapter(response.body());
+                        for(SearchTareaDiariaResult tarea : response.body()){
+                            if(tarea.getTerminada() == 0){
+                                tareasTerminadas.add(tarea);
+                            }
+                        }
+
+                        // Se ordena la lista para enseñar las tareas de mayor prioridad arriba
+                        Collections.sort(tareasTerminadas, new TareaComparator());
+
+                        TareasAdapter adapter = new TareasAdapter(tareasTerminadas);
                         LinearLayoutManager linearLayout = new LinearLayoutManager(TareaDiariaActivity.this);
 
                         OnListItemClick onListItemClick = new OnListItemClick() {

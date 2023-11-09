@@ -27,6 +27,8 @@ public class SearchTareaDiariaResult {
     private String updatedAt;
     @SerializedName("categoria")
     private Categoria categoria;
+    @SerializedName("terminada")
+    private Integer terminada;
 
     /**
      * No args constructor for use in serialization
@@ -34,21 +36,7 @@ public class SearchTareaDiariaResult {
     public SearchTareaDiariaResult() {
     }
 
-    /**
-     * @param createdAt
-     * @param fechaIntroduccion
-     * @param fechaLimite
-     * @param categoria
-     * @param duracion
-     * @param id
-     * @param childId
-     * @param nombre
-     * @param prioridad
-     * @param categoriaId
-     * @param updatedAt
-     */
-    public SearchTareaDiariaResult(Integer id, Integer childId, Integer categoriaId, String nombre, String fechaIntroduccion, String fechaLimite, String prioridad, Integer duracion, String createdAt, String updatedAt, Categoria categoria) {
-        super();
+    public SearchTareaDiariaResult(Integer id, Integer childId, Integer categoriaId, String nombre, String fechaIntroduccion, String fechaLimite, String prioridad, Integer duracion, String createdAt, String updatedAt, Categoria categoria, Integer terminada) {
         this.id = id;
         this.childId = childId;
         this.categoriaId = categoriaId;
@@ -60,6 +48,15 @@ public class SearchTareaDiariaResult {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.categoria = categoria;
+        this.terminada = terminada;
+    }
+
+    public Integer getTerminada() {
+        return terminada;
+    }
+
+    public void setTerminada(Integer terminada) {
+        this.terminada = terminada;
     }
 
     public Integer getId() {
