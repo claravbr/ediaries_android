@@ -37,6 +37,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -66,13 +67,14 @@ public interface ApiService {
 
     @GET(TAREA_DIARIA_URL+GET_TAREAS+"{childId}")
     Call<List<SearchTareaDiariaResult>> fetchTareasDiarias(@Header ("Authorization") String token, @Path("childId") Integer childId);
-
     @POST(TAREA_DIARIA_URL+NEW)
     Call<TareaDiaria> createTareaDiaria(@Header ("Authorization") String token, @Body CreateTareaDiariaRequest tareaDiaria);
     @PUT(TAREA_DIARIA_URL+UPDATE+"/"+"{tareaId}")
     Call<TareaDiaria> updateTareaDiaria(@Header ("Authorization") String token, @Body UpdateTareaDiariaRequest tareaDiaria, @Path("tareaId") Integer tareaId);
     @PUT(TAREA_DIARIA_URL+"{tareaId}"+"/"+DONE)
     Call<Response<Void>> setTareaDiariaTerminada(@Header ("Authorization") String token, @Path("tareaId") Integer tareaId);
+    @DELETE(TAREA_DIARIA_URL+"{tareaId}")
+    Call<Response<Void>> deleteTareaDiaria(@Header ("Authorization") String token, @Path("tareaId") Integer tareaId);
 
     @POST(DIARIO_EMOCIONES_URL+NEW)
     Call<DiarioEmociones> createDiarioEmociones(@Header ("Authorization") String token, @Body CreateDiarioEmocionesRequest diarioEmociones);

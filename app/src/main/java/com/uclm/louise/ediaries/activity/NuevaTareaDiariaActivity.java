@@ -48,6 +48,7 @@ public class NuevaTareaDiariaActivity extends AppCompatActivity {
 
     private MaterialToolbar topAppBar;
     private Button buttonSave;
+    private Button buttonDelete;
     TextInputEditText editTextFechaLimite;
     private final String errorServerMessage = "Error en la llamada al servidor: ";
     private final String errorRegisterMessage = "Error en el registro: ";
@@ -60,6 +61,9 @@ public class NuevaTareaDiariaActivity extends AppCompatActivity {
         // -- VOLVER A LISTA DE TAREAS DIARIAS --
         topAppBar = findViewById(R.id.topAppBar);
         setSupportActionBar(topAppBar);
+
+        buttonDelete = findViewById(R.id.buttonDelete);
+        buttonDelete.setVisibility(View.GONE);
 
         topAppBar.setNavigationIcon(R.drawable.ic_ab_back_material);
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -76,6 +80,15 @@ public class NuevaTareaDiariaActivity extends AppCompatActivity {
         if(tarea != null){
            fillInfoTarea(tarea);
         }
+
+        // BORRAR LA TAREA
+        buttonDelete = findViewById(R.id.buttonDelete);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteTarea(tarea.getId());
+            }
+        });
 
 
         // GUARDAR LA TAREA
@@ -99,8 +112,35 @@ public class NuevaTareaDiariaActivity extends AppCompatActivity {
 
     }
 
+    private void deleteTarea(Integer idTarea) {
+        SessionManager sessionManager = new SessionManager(this);
+
+        ApiService service  = ApiClient.getApiService(this);
+        service.deleteTareaDiaria("Bearer " + sessionManager.fetchAuthToken(), idTarea).enqueue(new Callback<Response<Void>>() {
+            @Override
+            public void onResponse(Call<Response<Void>> call, Response<Response<Void>> response) {
+                if(response.isSuccessful()){
+                    Intent intent = new Intent(NuevaTareaDiariaActivity.this, TareaDiariaActivity.class);
+                    startActivity(intent);
+                } else {
+                    error();
+                    Log.e("Error log", errorRegisterMessage + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Response<Void>> call, Throwable t) {
+                error();
+                Log.e("Error log", errorServerMessage + t.getMessage());
+            }
+        });
+    }
+
     private void fillInfoTarea(SearchTareaDiariaResult tarea) {
 
+        // Muestra el botón para dar la opción a borrar la tarea
+        buttonDelete = findViewById(R.id.buttonDelete);
+        buttonDelete.setVisibility(View.VISIBLE);
 
         editTextFechaLimite = findViewById(R.id.editTextFechaLimite);
         TextInputEditText editTextNombreTarea = findViewById(R.id.editTextNombreTarea);

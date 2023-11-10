@@ -19,7 +19,7 @@ public class TareaDiaria {
     @SerializedName("duracion")
     private Integer duracion;
     @SerializedName("terminada")
-    private Boolean terminada;
+    private Integer terminada;
     @SerializedName("updated_at")
     private String updatedAt;
     @SerializedName("created_at")
@@ -34,7 +34,7 @@ public class TareaDiaria {
     public TareaDiaria() {
     }
 
-    public TareaDiaria(Integer childId, Integer categoriaId, String nombre, String fechaIntroduccion, String fechaLimite, String prioridad, Integer duracion, Boolean terminada, String updatedAt, String createdAt, Integer id) {
+    public TareaDiaria(Integer childId, Integer categoriaId, String nombre, String fechaIntroduccion, String fechaLimite, String prioridad, Integer duracion, Integer terminada, String updatedAt, String createdAt, Integer id) {
         this.childId = childId;
         this.categoriaId = categoriaId;
         this.nombre = nombre;
@@ -48,11 +48,11 @@ public class TareaDiaria {
         this.id = id;
     }
 
-    public Boolean getTerminada() {
+    public Integer getTerminada() {
         return terminada;
     }
 
-    public void setTerminada(Boolean terminada) {
+    public void setTerminada(Integer terminada) {
         this.terminada = terminada;
     }
 
