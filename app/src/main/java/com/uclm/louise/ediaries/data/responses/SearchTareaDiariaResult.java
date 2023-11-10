@@ -3,7 +3,9 @@ package com.uclm.louise.ediaries.data.responses;
 import com.google.gson.annotations.SerializedName;
 import com.uclm.louise.ediaries.data.models.Categoria;
 
-public class SearchTareaDiariaResult {
+import java.io.Serializable;
+
+public class SearchTareaDiariaResult implements Serializable {
 
     @SerializedName("id")
     private Integer id;

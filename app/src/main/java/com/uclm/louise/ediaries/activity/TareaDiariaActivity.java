@@ -121,6 +121,10 @@ public class TareaDiariaActivity extends AppCompatActivity {
                                     startActivity(intentLoading);
                                 } else if (action == Editar){
 
+                                    Intent intent = new Intent(TareaDiariaActivity.this, NuevaTareaDiariaActivity.class);
+                                    intent.putExtra("tarea", tarea);
+                                    startActivity(intent);
+
                                 }
 
                             }
@@ -165,7 +169,6 @@ public class TareaDiariaActivity extends AppCompatActivity {
                     error();
                     Log.e("Error log", errorRegisterMessage + response.code());
                 }
-
             }
 
             @Override

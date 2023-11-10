@@ -2,7 +2,9 @@ package com.uclm.louise.ediaries.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Categoria {
+import java.io.Serializable;
+
+public class Categoria implements Serializable {
 
     @SerializedName("id")
     private Integer id;

@@ -11,6 +11,7 @@ import static com.uclm.louise.ediaries.utils.Constantes.LOGIN_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.NEW;
 import static com.uclm.louise.ediaries.utils.Constantes.REGISTER_URL;
 import static com.uclm.louise.ediaries.utils.Constantes.TAREA_DIARIA_URL;
+import static com.uclm.louise.ediaries.utils.Constantes.UPDATE;
 import static com.uclm.louise.ediaries.utils.Constantes.USUARIO_URL;
 
 import com.uclm.louise.ediaries.data.models.DClinicos;
@@ -26,6 +27,7 @@ import com.uclm.louise.ediaries.data.requests.CreateDiarioEmocionesRequest;
 import com.uclm.louise.ediaries.data.requests.CreateTareaDiariaRequest;
 import com.uclm.louise.ediaries.data.requests.CreateUsuarioRequest;
 import com.uclm.louise.ediaries.data.requests.LoginRequest;
+import com.uclm.louise.ediaries.data.requests.UpdateTareaDiariaRequest;
 import com.uclm.louise.ediaries.data.responses.CreateUsuarioResult;
 import com.uclm.louise.ediaries.data.responses.LoginResponse;
 import com.uclm.louise.ediaries.data.responses.SearchTareaDiariaResult;
@@ -67,6 +69,8 @@ public interface ApiService {
 
     @POST(TAREA_DIARIA_URL+NEW)
     Call<TareaDiaria> createTareaDiaria(@Header ("Authorization") String token, @Body CreateTareaDiariaRequest tareaDiaria);
+    @PUT(TAREA_DIARIA_URL+UPDATE+"/"+"{tareaId}")
+    Call<TareaDiaria> updateTareaDiaria(@Header ("Authorization") String token, @Body UpdateTareaDiariaRequest tareaDiaria, @Path("tareaId") Integer tareaId);
     @PUT(TAREA_DIARIA_URL+"{tareaId}"+"/"+DONE)
     Call<Response<Void>> setTareaDiariaTerminada(@Header ("Authorization") String token, @Path("tareaId") Integer tareaId);
 

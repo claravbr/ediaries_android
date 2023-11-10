@@ -18,10 +18,13 @@ import com.uclm.louise.ediaries.R;
 import com.uclm.louise.ediaries.data.clients.ApiClient;
 import com.uclm.louise.ediaries.data.models.TareaDiaria;
 import com.uclm.louise.ediaries.data.requests.CreateTareaDiariaRequest;
+import com.uclm.louise.ediaries.data.requests.UpdateTareaDiariaRequest;
+import com.uclm.louise.ediaries.data.responses.SearchTareaDiariaResult;
 import com.uclm.louise.ediaries.utils.DatePickerFragment;
 import com.uclm.louise.ediaries.utils.Session;
 import com.uclm.louise.ediaries.utils.SessionManager;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -67,14 +70,20 @@ public class NuevaTareaDiariaActivity extends AppCompatActivity {
             }
         });
 
+        // SI ES UN UPDATE, RELLENA EL FORMULARIO CON LOS DATOS ACTUALES
+        SearchTareaDiariaResult tarea = (SearchTareaDiariaResult) getIntent().getSerializableExtra("tarea");
+
+        if(tarea != null){
+           fillInfoTarea(tarea);
+        }
+
+
         // GUARDAR LA TAREA
         buttonSave = findViewById(R.id.buttonSave);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextStep();
-                Intent intent = new Intent(NuevaTareaDiariaActivity.this, LoadingActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -88,6 +97,31 @@ public class NuevaTareaDiariaActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void fillInfoTarea(SearchTareaDiariaResult tarea) {
+
+
+        editTextFechaLimite = findViewById(R.id.editTextFechaLimite);
+        TextInputEditText editTextNombreTarea = findViewById(R.id.editTextNombreTarea);
+
+        // Se rellena el formulario con la información actual de la tarea
+        editTextNombreTarea.setText(tarea.getNombre());
+        editTextFechaLimite.setText(formatDate(tarea.getFechaLimite()));
+
+    }
+
+    private String formatDate(String fechaLimite) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            Date date = inputFormat.parse(fechaLimite);
+            return outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     private void nextStep() {
@@ -115,22 +149,63 @@ public class NuevaTareaDiariaActivity extends AppCompatActivity {
 
         // Comprobar si se ha quedado algun campo obligatorio sin rellenar
         if(validFields(textInputLayoutCategoriaTarea, textInputLayoutPrioridadTarea, editTextNombreTarea, editTextFechaLimite, editTextDuracion)){
+
+            Intent intent = new Intent(NuevaTareaDiariaActivity.this, LoadingActivity.class);
+            startActivity(intent);
+
             Session session = Session.getInstance();
 
-            CreateTareaDiariaRequest tareaDiariaRequest = new CreateTareaDiariaRequest(session.getChildId(), getCategoriaId(categoria), nombreTarea, fechaActual, fechaLimite, prioridad, duracion);
-            saveTarea(tareaDiariaRequest);
+            // Creación o actualización
+            SearchTareaDiariaResult tarea = (SearchTareaDiariaResult) getIntent().getSerializableExtra("tarea");
+
+            if(tarea != null){
+                //Actualizacion
+                UpdateTareaDiariaRequest updateTareaDiariaRequest = new UpdateTareaDiariaRequest(getCategoriaId(categoria), nombreTarea, fechaLimite, prioridad, duracion);
+                updateTarea(updateTareaDiariaRequest, tarea.getId());
+
+            } else {
+                // Creación
+                CreateTareaDiariaRequest createTareaDiariaRequest = new CreateTareaDiariaRequest(session.getChildId(), getCategoriaId(categoria), nombreTarea, fechaActual, fechaLimite, prioridad, duracion);
+                saveTarea(createTareaDiariaRequest);
+
+            }
         }
+    }
+
+    private void updateTarea(UpdateTareaDiariaRequest updateTareaDiariaRequest, Integer tareaId) {
+        SessionManager sessionManager = new SessionManager(this);
+
+        ApiService service  = ApiClient.getApiService(this);
+        service.updateTareaDiaria("Bearer " + sessionManager.fetchAuthToken(), updateTareaDiariaRequest, tareaId).enqueue(new Callback<TareaDiaria>() {
+            @Override
+            public void onResponse(Call<TareaDiaria> call, Response<TareaDiaria> response) {
+                if(response.isSuccessful()){
+                    Intent intent = new Intent(NuevaTareaDiariaActivity.this, TareaDiariaActivity.class);
+                    startActivity(intent);
+                } else {
+                    error();
+                    Log.e("Error log", errorRegisterMessage + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TareaDiaria> call, Throwable t) {
+                error();
+                Log.e("Error log", errorServerMessage + t.getMessage());
+            }
+        });
+
     }
 
     private Integer getCategoriaId(String categoria) {
         return categoriaIdMap.get(categoria);
     }
 
-    private void saveTarea(CreateTareaDiariaRequest tareaDiariaRequest) {
+    private void saveTarea(CreateTareaDiariaRequest createTareaDiariaRequest) {
         SessionManager sessionManager = new SessionManager(this);
 
         ApiService service = ApiClient.getApiService(this);
-        service.createTareaDiaria("Bearer " + sessionManager.fetchAuthToken(), tareaDiariaRequest).enqueue(new Callback<TareaDiaria>() {
+        service.createTareaDiaria("Bearer " + sessionManager.fetchAuthToken(), createTareaDiariaRequest).enqueue(new Callback<TareaDiaria>() {
             @Override
             public void onResponse(Call<TareaDiaria> call, Response<TareaDiaria> response) {
                 if(response.isSuccessful()){
