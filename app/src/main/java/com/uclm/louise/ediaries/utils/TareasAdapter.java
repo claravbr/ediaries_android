@@ -27,14 +27,6 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
     public List<SearchTareaDiariaResult> listaTareas;
     private OnListItemClick onListItemClick;
 
-    public List<SearchTareaDiariaResult> getListaTareas() {
-        return listaTareas;
-    }
-
-    public void setListaTareas(List<SearchTareaDiariaResult> listaTareas) {
-        this.listaTareas = listaTareas;
-    }
-
     public TareasAdapter(List<SearchTareaDiariaResult> listaTareas) {
         this.listaTareas = listaTareas;
     }

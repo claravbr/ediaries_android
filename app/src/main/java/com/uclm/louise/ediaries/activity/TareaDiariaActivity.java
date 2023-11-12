@@ -142,6 +142,13 @@ public class TareaDiariaActivity extends AppCompatActivity {
                         recyclerView.setVisibility(View.GONE);
                         textSinTareas.setVisibility(View.VISIBLE);
                     }
+                } else {
+                    Toast.makeText(TareaDiariaActivity.this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+
+                    Intent startAppIntent = new Intent(TareaDiariaActivity.this, MenuPrincipalActivity.class);
+                    startActivity(startAppIntent);
+
+                    Log.e("Error log", errorRegisterMessage + response.code());
                 }
 
             }
@@ -149,6 +156,12 @@ public class TareaDiariaActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<SearchTareaDiariaResult>> call, Throwable t) {
 
+                Toast.makeText(TareaDiariaActivity.this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+
+                Intent startAppIntent = new Intent(TareaDiariaActivity.this, MenuPrincipalActivity.class);
+                startActivity(startAppIntent);
+
+                Log.e("Error log", errorServerMessage + t.getMessage());
             }
         });
     }
