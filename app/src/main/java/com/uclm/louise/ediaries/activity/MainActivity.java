@@ -19,6 +19,8 @@ import com.uclm.louise.ediaries.data.responses.LoginResponse;
 import com.uclm.louise.ediaries.utils.Session;
 import com.uclm.louise.ediaries.utils.SessionManager;
 
+import java.util.regex.Pattern;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     private SessionManager sessionManager;
     private ApiClient apiClient;
+
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$";
 
     // creating constant keys for shared preferences.
     public static final String SHARED_PREFS = "shared_prefs";
@@ -99,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString();
 
         // Comprobar si se han rellenado los campos antes de intentar continuar
-        if(validFields(editTextEmail, editTextPassword)){
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             // below two lines will put values for
@@ -109,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
             // to save our data with key and value.
             editor.apply();
+        if(validFields(editTextEmail, editTextPassword) && validEmail(editTextEmail)){
 
             LoginRequest loginRequest = new LoginRequest(email, password);
 
@@ -142,8 +146,10 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("Info log", "Sesión iniciada con éxito");
 
                     } else {
-                        // Error al iniciar sesión
-                        error();
+                        // Error al iniciar sesión (credenciales incorrectas)
+                        Toast.makeText(MainActivity.this, "El email y/o contraseña son incorrectos, por favor intentalo de nuevo", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
                     }
                 }
             });
@@ -158,6 +164,15 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Por favor, inicia sesión", Toast.LENGTH_SHORT).show();
                 return false;
             }
+        }
+        return true;
+    }
+
+    private boolean validEmail(TextInputEditText editTextEmail) {
+        if(!Pattern.matches(EMAIL_REGEX, editTextEmail.getText().toString())){
+            editTextEmail.setError("Email no válido");
+            editTextEmail.requestFocus();
+            return false;
         }
         return true;
     }
