@@ -78,6 +78,7 @@ public class NuevaTareaDiariaActivity extends AppCompatActivity {
         SearchTareaDiariaResult tarea = (SearchTareaDiariaResult) getIntent().getSerializableExtra("tarea");
 
         if(tarea != null){
+            topAppBar.setTitle("Editar tarea");
            fillInfoTarea(tarea);
         }
 

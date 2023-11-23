@@ -131,8 +131,6 @@ public class DiarioEmocionesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 nextStep();
-                Intent intent = new Intent(DiarioEmocionesActivity.this, LoadingActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -158,6 +156,10 @@ public class DiarioEmocionesActivity extends AppCompatActivity {
         String motivo = editTextMotivo.getText().toString();
 
         if(validFields(editTextMotivo)){
+
+            Intent intent = new Intent(DiarioEmocionesActivity.this, LoadingActivity.class);
+            startActivity(intent);
+
             Session session = Session.getInstance();
 
             CreateDiarioEmocionesRequest diarioEmocionesRequest = new CreateDiarioEmocionesRequest(session.getChildId(), emocion, motivo);
