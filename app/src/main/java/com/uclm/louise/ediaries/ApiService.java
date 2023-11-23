@@ -52,16 +52,16 @@ public interface ApiService {
     @POST(USUARIO_URL+REGISTER_URL)
     Call<CreateUsuarioResult> createUsuario(@Body CreateUsuarioRequest usuario);
 
-    @POST(USUARIO_URL+DPERSONALES_URL)
+    @POST(DPERSONALES_URL)
     Call<DPersonales> createDPersonales(@Body CreateDPersonalesRequest dpersonales);
 
-    @POST(USUARIO_URL+DCLINICOS_URL)
+    @POST(DCLINICOS_URL)
     Call<DClinicos> createDClinicos(@Body CreateDClinicosRequest dclinicos);
 
-    @POST(USUARIO_URL+DESCOLARES_URL)
+    @POST(DESCOLARES_URL)
     Call<DEscolares> createDEscolares(@Body CreateDEscolaresRequest descolares);
 
-    @POST(USUARIO_URL+ACTIVIDADES_FAVORITAS_URL)
+    @POST(ACTIVIDADES_FAVORITAS_URL)
     Call<Response<Void>> createActividadesFavoritas(@Body CreateActividadesFavoritasRequest actividadesFavoritas);
 
 
