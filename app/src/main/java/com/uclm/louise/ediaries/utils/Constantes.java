@@ -3,7 +3,7 @@ package com.uclm.louise.ediaries.utils;
 public class Constantes {
 
     //Endpoints
-    public static final String BASE_URL = "http://10.0.2.2:80/api/";
+    public static final String BASE_URL = "http://vi-smart.i3a.uclm.es/ediaries/api/";
     public static final String LOGIN_URL = "auth/login";
     public static final String REGISTER_URL = "register";
 

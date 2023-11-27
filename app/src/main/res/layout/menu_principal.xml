@@ -96,4 +96,14 @@
         app:layout_constraintStart_toEndOf="@+id/option3Button"
         app:layout_constraintTop_toTopOf="@+id/option3Button" />
 
+    <!-- <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Cerrar sesión"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option4Button" /> -->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
