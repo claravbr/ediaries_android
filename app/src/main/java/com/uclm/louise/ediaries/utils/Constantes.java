@@ -7,7 +7,6 @@ public class Constantes {
     public static final String LOGIN_URL = "auth/login";
     public static final String REGISTER_URL = "register";
 
-
     // Services
     public static final String DIARIO_EMOCIONES_URL = "diario-emociones/";
     public static final String TAREA_DIARIA_URL = "tarea-diaria/";
@@ -22,6 +21,5 @@ public class Constantes {
     public static final String UPDATE = "update";
     public static final String DONE = "done";
     public static final String GET_TAREAS = "get-tareas/";
-
 
 }

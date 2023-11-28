@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     // variable for shared preferences
     SharedPreferences sharedPreferences;
-    String email, password;
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +58,8 @@ public class MainActivity extends AppCompatActivity {
         // in shared prefs inside get string method
         // we are passing key value as EMAIL_KEY and
         // default value is set to null if not present.
-        email = sharedPreferences.getString("EMAIL_KEY", null);
-        password = sharedPreferences.getString("PASSWORD_KEY", null);
-
+        sessionManager = new SessionManager(this);
+        token = sessionManager.fetchAuthToken();
 
         // -- INICIAR SESION --
         buttonLogin = findViewById(R.id.buttonLogin);
@@ -86,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (email != null && password != null) {
+        if (token != null) {
             // SI YA ESTABA LOGUEADO, DIRECTAMENTE AL MENU PRINCIPAL
-            Intent i = new Intent(MainActivity.this, MenuPrincipalActivity.class);
-            startActivity(i);
+            //Intent i = new Intent(MainActivity.this, MenuPrincipalActivity.class);
+            //startActivity(i);
         }
     }
 
@@ -103,15 +102,6 @@ public class MainActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString();
 
         // Comprobar si se han rellenado los campos antes de intentar continuar
-
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            // below two lines will put values for
-            // email and password in shared preferences.
-            editor.putString(EMAIL_KEY, email);
-            editor.putString(PASSWORD_KEY, password);
-
-            // to save our data with key and value.
-            editor.apply();
         if(validFields(editTextEmail, editTextPassword) && validEmail(editTextEmail)){
 
             LoginRequest loginRequest = new LoginRequest(email, password);

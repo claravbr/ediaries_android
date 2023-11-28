@@ -89,7 +89,6 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
 
         public SearchTareaDiariaResult tarea;
 
-
         public TareaViewHolder(View itemView) {
             super(itemView);
             nombreTarea = itemView.findViewById(R.id.textViewTask1);

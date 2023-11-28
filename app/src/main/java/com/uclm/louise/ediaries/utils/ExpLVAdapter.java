@@ -64,7 +64,7 @@ public class ExpLVAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean hasStableIds() {
-        return true; // Puedes establecerlo en true si los ID son estables
+        return true;
     }
 
     @Override
