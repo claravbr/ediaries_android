@@ -39,7 +39,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MenuPrincipalActivity.this, TareaDiariaActivity.class);
                 startActivity(intent);
-                Log.i("Info log", "Opción mis tareas clickada");
             }
         });
 
@@ -49,7 +48,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MenuPrincipalActivity.this, MiProgresoActivity.class);
                 startActivity(intent);
-                Log.i("Info log", "Opción mi progreso clickada");
             }
         });
 
@@ -59,7 +57,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MenuPrincipalActivity.this, ConsejosActivity.class);
                 startActivity(intent);
-                Log.i("Info log", "Opción consejos y ayuda clickada");
             }
         });
 
@@ -69,7 +66,15 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MenuPrincipalActivity.this, DiarioEmocionesActivity.class);
                 startActivity(intent);
-                Log.i("Info log", "Opción cómo estoy clickada");
+            }
+        });
+
+        Button buttonCerrarSesion = findViewById(R.id.buttonLogout);
+        buttonCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuPrincipalActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
