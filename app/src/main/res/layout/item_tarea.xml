@@ -48,7 +48,7 @@
         app:dividerInsetStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTaskTimeLeft" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEdit" />
 
     <ImageView
         android:id="@+id/imageViewDone"
@@ -62,7 +62,7 @@
         android:id="@+id/imageViewEdit"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewDone"
         app:srcCompat="@drawable/ic_edit" />
